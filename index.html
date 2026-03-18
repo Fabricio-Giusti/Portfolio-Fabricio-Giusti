@@ -221,6 +221,19 @@
 
   .profile-links a:hover { background: var(--teal); color: white; }
 
+  .btn-resume {
+    background: var(--orange) !important;
+    color: white !important;
+    border-color: var(--orange) !important;
+    font-weight: 600;
+  }
+
+  .btn-resume:hover {
+    background: #cf5a3a !important;
+    border-color: #cf5a3a !important;
+    color: white !important;
+  }
+
   .facts-table {
     width: 100%;
     border-collapse: collapse;
@@ -391,6 +404,7 @@
   <div class="sidebar-footer">
     <a href="mailto:fabriciogiusti28@gmail.com">fabriciogiusti28@gmail.com</a>
     <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">linkedin.com/in/fabricio-giusti</a>
+    <a href="https://github.com/Fabricio-Giusti" target="_blank">github.com/Fabricio-Giusti</a>
     <a href="tel:+17654761840">+1 (765) 476-1840</a>
   </div>
 </aside>
@@ -414,7 +428,9 @@
       <div class="profile-links">
         <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
         <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Fabricio-Giusti" target="_blank">GitHub</a>
         <a href="tel:+17654761840">Phone</a>
+        <a href="FabricioGiusti_Resume_26.pdf" download class="btn-resume">Download Resume</a>
       </div>
     </div>
   </div>
@@ -778,21 +794,6 @@
 </main>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const sections = document.querySelectorAll('.page');
-  const navLinks = document.querySelectorAll('.sidebar nav a');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-        });
-      }
-    });
-  }, { threshold: 0.25 });
-  sections.forEach(s => observer.observe(s));
-</script>
-
-</body>
-</html>
+  const navLinks = document.querySelectorAll('.side
