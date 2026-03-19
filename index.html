@@ -234,6 +234,12 @@
     color: white !important;
   }
 
+  /* Keyword highlight for tool/software names in body text */
+  .kw {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
   .facts-table {
     width: 100%;
     border-collapse: collapse;
@@ -402,7 +408,7 @@
     <a href="#awards">Awards</a>
   </nav>
   <div class="sidebar-footer">
-    <a href="mailto:fabriciogiusti28@gmail.com">fabriciogiusti28@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#51373033233832383e363824222538636911363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="6e080f0c1c070d070109071b1d1a075c562e09030f0702400d0103">[email&#160;protected]</span></a>
     <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">linkedin.com/in/fabricio-giusti</a>
     <a href="https://github.com/Fabricio-Giusti" target="_blank">github.com/Fabricio-Giusti</a>
     <a href="tel:+17654761840">+1 (765) 476-1840</a>
@@ -424,9 +430,8 @@
       <div class="title">Mechanical Engineering, Purdue University, Class of 2028</div>
       <p>I am a Mechanical Engineering student at Purdue University with a focus on robotics, automation, and the integration of machine learning into physical systems. My work sits at the intersection of hardware and software, taking projects from CAD assemblies and digital twins through to data-driven physical prototypes.</p>
       <p>I currently serve as an Undergraduate Research Assistant at the Advanced Computation and Artificial Intelligence (ACAI) Lab, developing MuJoCo simulations to train Vision-Language-Action models for the Mobile ALOHA platform. Outside of research, I co-founded the Boiler Soccer Robot Association at Purdue, building fully autonomous humanoid robots for the RoboCup Humanoid League.</p>
-      <p>Native in Portuguese, fluent in English and Spanish, and developing proficiency in Italian and Mandarin.</p>
       <div class="profile-links">
-        <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
+        <a href="/cdn-cgi/l/email-protection#e4828586968d878d8b838d9197908dd6dca48389858d88ca878b89">Email</a>
         <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">LinkedIn</a>
         <a href="https://github.com/Fabricio-Giusti" target="_blank">GitHub</a>
         <a href="tel:+17654761840">Phone</a>
@@ -444,7 +449,7 @@
     <tr><td>Enrollment</td><td>August 2024</td></tr>
     <tr><td>Citizenship</td><td>Brazil and Italy (Dual Citizenship)</td></tr>
     <tr><td>Languages</td><td>Portuguese (Native), English (Fluent), Spanish (Fluent), Italian (Basic), Mandarin (Basic)</td></tr>
-    <tr><td>Contact</td><td>fabriciogiusti28@gmail.com, +1 (765) 476-1840</td></tr>
+    <tr><td>Contact</td><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb9d9a9989929892949c928e888f92c9c3bb9c969a9297d5989496">[email&#160;protected]</a>, +1 (765) 476-1840</td></tr>
   </table>
 
   <h2 class="section-title">About this portfolio</h2>
@@ -477,7 +482,7 @@
   </div>
 
   <h2 class="section-title">Overview</h2>
-  <p class="body-text">Training Vision-Language-Action (VLA) foundation models for robotic manipulation requires massive amounts of demonstration data. Collecting this data physically is expensive, slow, and limits the diversity of scenarios the robot encounters. This project addresses that bottleneck with a comprehensive sim-to-real transfer pipeline built on the MuJoCo physics engine, generating thousands of diverse manipulation demonstrations for the 17-DOF Mobile ALOHA platform. The simulation provides multi-camera visual data, including overhead and wrist-mounted views, alongside 14-DOF physical effort feedback from all joints.</p>
+  <p class="body-text">Training <span class="kw">Vision-Language-Action (VLA)</span> foundation models for robotic manipulation requires massive amounts of demonstration data. Collecting this data physically is expensive, slow, and limits the diversity of scenarios the robot encounters. This project addresses that bottleneck with a comprehensive sim-to-real transfer pipeline built on the <span class="kw">MuJoCo</span> physics engine, generating thousands of diverse manipulation demonstrations for the 17-DOF <span class="kw">Mobile ALOHA</span> platform. The simulation provides multi-camera visual data, including overhead and wrist-mounted views, alongside 14-DOF physical effort feedback from all joints.</p>
 
   <div class="img-grid cols-2">
     <div class="img-wrap">
@@ -492,10 +497,10 @@
 
   <h2 class="section-title">My contributions</h2>
   <ul class="bullets">
-    <li>Kinematics and Policy Development: Engineered four custom scripted policies for complex bimanual tasks, including tube-picking and mid-air handovers, using a Jacobian-based damped least squares Inverse Kinematics (IK) solver.</li>
+    <li>Kinematics and Policy Development: Engineered four custom scripted policies for complex bimanual tasks, including tube-picking and mid-air handovers, using a <span class="kw">Jacobian-based damped least squares IK</span> solver.</li>
     <li>Advanced Manipulation Features: Implemented physical intelligence features into the control policies, including tube-position feedback to compensate for pendulum swing, grasp verification, and descent collision detection.</li>
-    <li>Domain Randomization: Developed a procedural system to generate randomized distractor objects across the workspace, varying object properties, positions, and environmental conditions to ensure the VLA model generalizes rather than memorizes a static scene.</li>
-    <li>Data Pipeline and Quality Control: Built a dense episode scoring system to evaluate and filter simulation runs on a scale from Perfect to Catastrophic, then export multi-modal data into LeRobot v3.0 format for model training.</li>
+    <li>Domain Randomization: Developed a procedural system using <span class="kw">dm_control</span> to generate randomized distractor objects across the workspace, varying object properties, positions, and environmental conditions to ensure the VLA model generalizes rather than memorizes a static scene.</li>
+    <li>Data Pipeline and Quality Control: Built a dense episode scoring system to evaluate and filter simulation runs on a scale from Perfect to Catastrophic, then export multi-modal data into <span class="kw">LeRobot v3.0</span> format for model training.</li>
   </ul>
 
   <div class="img-grid cols-1">
@@ -507,9 +512,9 @@
 
   <h2 class="section-title">Results</h2>
   <ul class="bullets">
-    <li>The pipeline generates large-scale, standardized datasets recording joint states, velocities, efforts, and action commands across thousands of randomized episodes.</li>
-    <li>Generated data is actively being used to fine-tune pre-trained VLA models via NSF ACCESS HPC resources, significantly reducing dependency on manual human teleoperation.</li>
-    <li>Fine-tuned VLA models and LLMs in Python to successfully automate bookshelf organization tasks on the real-world Mobile ALOHA platform.</li>
+    <li>The pipeline generates standardized datasets recording joint states, velocities, efforts, and action commands, providing structured training data for VLA model fine-tuning.</li>
+    <li>Pipeline output is actively being used to fine-tune pre-trained VLA models via <span class="kw">NSF ACCESS HPC</span> resources, reducing dependency on manual human teleoperation for data collection.</li>
+    <li>Successfully fine-tuned VLA models and LLMs in Python to automate bookshelf organization tasks on the real-world Mobile ALOHA platform.</li>
   </ul>
 </section>
 
@@ -557,10 +562,10 @@
   <h2 class="section-title">My contributions</h2>
   <ul class="bullets">
     <li>Directed a five-member team as Design Lead through the full project lifecycle, coordinating both the electrical and mechanical workstreams.</li>
-    <li>Electrical System Design: Developed the puck's internal electronics using KiCad for PCB layout and LTspice for circuit simulation. The primary challenge was designing the circuit to withstand severe impact forces without damaging the components.</li>
-    <li>Mechanical Design: Used Fusion 360 to conduct structural analysis and identify weak points in early models. Iterated from a snap-fit enclosure to a threaded and screwed closure, improving durability and simplifying battery replacement.</li>
+    <li>Electrical System Design: Developed the puck's internal electronics using <span class="kw">KiCad</span> for PCB layout and <span class="kw">LTspice</span> for circuit simulation. The primary challenge was designing the circuit to withstand severe impact forces without damaging the components.</li>
+    <li>Mechanical Design: Used <span class="kw">Fusion 360</span> to conduct structural analysis and identify weak points in early models. Iterated from a snap-fit enclosure to a threaded and screwed closure, improving durability and simplifying battery replacement.</li>
     <li>Geometry Optimization: Drop tests revealed that sharp angles created stress concentrations upon impact. Redesigned the geometry with curved edges and fillets to better distribute impact forces.</li>
-    <li>Material Selection: Evaluated PETG for early iterations and selected Polyurethane for the final prototype based on superior impact resistance, energy absorption, and performance at low temperatures.</li>
+    <li>Material Selection: Evaluated <span class="kw">PETG</span> for early iterations and selected <span class="kw">Polyurethane</span> for the final prototype based on superior impact resistance, energy absorption, and performance at low temperatures.</li>
     <li>Conducted real-user testing with a hockey player to validate mechanical durability, sound output consistency, and waterproofing under game conditions.</li>
   </ul>
 
@@ -613,14 +618,14 @@
 
   <h2 class="section-title">My contributions</h2>
   <ul class="bullets">
-    <li>Component Modeling: Engineered all individual components using the Part Design application within 3DEXPERIENCE.</li>
-    <li>Assembly and Motion: Established mechanical relationships between parts in the Assembly Design environment. Applied precise joint constraints including revolute joints for the gear train and cylindrical constraints for the pistons, ensuring the assembly possesses realistic kinematic motion. Turning the hand wheel accurately drives the gears, which in turn rotates the main rod and cycles the pistons inside the block.</li>
-    <li>AR Integration: Used the Creative Experience application to deploy the fully constrained kinematic assembly to the Dassault Systemes application on an Apple Vision Pro headset, enabling users to view the digital twin in 3D space, interact with the hand wheel, and analyze the internal motion of the piston-cylinder mechanism in real time.</li>
+    <li>Component Modeling: Engineered all individual components using the <span class="kw">Part Design</span> application within <span class="kw">3DEXPERIENCE</span>.</li>
+    <li>Assembly and Motion: Established mechanical relationships between parts in the <span class="kw">Assembly Design</span> environment. Applied precise joint constraints including revolute joints for the gear train and cylindrical constraints for the pistons, ensuring the assembly possesses realistic kinematic motion.</li>
+    <li>AR Integration: Used the <span class="kw">Creative Experience</span> application to deploy the fully constrained kinematic assembly to the Dassault Systemes app on an <span class="kw">Apple Vision Pro</span> headset, enabling users to view the digital twin in 3D space and analyze internal motion in real time.</li>
   </ul>
 
   <h2 class="section-title">Results</h2>
   <ul class="bullets">
-    <li>Demonstrated the complete lifecycle of a digital twin: from foundational CAD modeling and kinematic assembly to immersive AR visualization on Apple Vision Pro.</li>
+    <li>Demonstrated the complete lifecycle of a <span class="kw">digital twin</span>: from foundational CAD modeling and kinematic assembly to immersive AR visualization on Apple Vision Pro.</li>
     <li>The workflow has direct industrial applications including risk-free operator training, synthetic kinematic data generation for predictive maintenance models, and pre-manufacturing design validation in a mixed-reality environment.</li>
   </ul>
 </section>
@@ -647,7 +652,7 @@
 
   <h2 class="section-title">Overview</h2>
   <ul class="bullets">
-    <li>Designed and assembled a functional mechanical model of a Little Brazer engine using Siemens NX and Teamcenter, following industry-standard CAD and Product Lifecycle Management (PLM) workflows.</li>
+    <li>Designed and assembled a functional mechanical model of a Little Brazer engine using <span class="kw">Siemens NX</span> and <span class="kw">Teamcenter</span>, following industry-standard CAD and Product Lifecycle Management (PLM) workflows.</li>
     <li>Individual components include the engine body, cooling cylinder, crankshaft, cam, connecting rod, and wrist pin brackets, all modeled from scratch.</li>
   </ul>
 
@@ -660,14 +665,14 @@
 
   <h2 class="section-title">My contributions</h2>
   <ul class="bullets">
-    <li>Part Design: Engineered all individual mechanical components from scratch using Siemens NX.</li>
-    <li>Assembly and Constraints: Performed a bottom-up assembly of the engine, applying rigorous geometric constraints including concentric, distance, and touch constraints to ensure the crankshaft and piston rod articulate correctly without mechanical interference.</li>
-    <li>Data Management: Used Teamcenter to manage CAD files, handle version control, and maintain the structural integrity of the sub-assemblies throughout the design process, mirroring industry-standard PLM practices.</li>
+    <li>Part Design: Engineered all individual mechanical components from scratch using <span class="kw">Siemens NX</span>.</li>
+    <li>Assembly and Constraints: Performed a bottom-up assembly applying concentric, distance, and touch constraints to ensure the crankshaft and piston rod articulate correctly without mechanical interference.</li>
+    <li>Data Management: Used <span class="kw">Teamcenter PLM</span> to manage CAD files, handle version control, and maintain structural integrity of sub-assemblies, mirroring industry-standard practices.</li>
   </ul>
 
   <h2 class="section-title">Results</h2>
   <ul class="bullets">
-    <li>Produced a fully constrained, kinematically valid engine assembly, demonstrating the ability to design individual parts for manufacturability, manage sub-assemblies with version control, and validate kinematic accuracy entirely within a PLM environment before physical production.</li>
+    <li>Produced a fully constrained, kinematically valid engine assembly, demonstrating the ability to design for manufacturability, manage sub-assemblies with version control, and validate kinematic accuracy entirely within a PLM environment before physical production.</li>
   </ul>
 </section>
 
@@ -677,8 +682,8 @@
   <div class="page-header">
     <h1>The Nostradamus Project: Global Hurricane Predictor</h1>
     <div class="meta">
-      Purdue University, ENGR 133 | Role: Creator and Developer<br>
-      September 2024 to December 2024
+      Role: Creator and Developer | September 2024 to December 2024 |
+      <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal); text-decoration:none;">View on GitHub</a>
     </div>
   </div>
 
@@ -686,16 +691,18 @@
     <span class="tag teal">Python</span>
     <span class="tag teal">Pandas</span>
     <span class="tag teal">Folium</span>
-    <span class="tag">Geocoding APIs</span>
-    <span class="tag">NOAA Historical Datasets</span>
+    <span class="tag teal">OpenStreetMap API</span>
+    <span class="tag">IBTrACS Dataset</span>
+    <span class="tag">NOAA NCEI</span>
     <span class="tag">Geospatial Mapping</span>
-    <span class="tag">Data Analysis</span>
+    <span class="tag">Vectorized Data Processing</span>
   </div>
 
   <h2 class="section-title">Overview</h2>
   <ul class="bullets">
-    <li>A Python-based analytical tool that processes over 180 years of historical hurricane data from 1840 to the present, sourced from the National Centers for Environmental Information (NCEI).</li>
-    <li>The program calculates and visualizes the probability of a hurricane occurring in any user-defined city worldwide during a specific month, translating raw meteorological data into an accessible risk estimate.</li>
+    <li>A <span class="kw">Python</span>-based analytical tool that processes the complete <span class="kw">IBTrACS v04r01</span> dataset from NOAA, containing over 3 million cyclone track records from all ocean basins from 1842 to the present (~310 MB).</li>
+    <li>Given any city in the world and a month of the year, the program calculates the historical probability of a hurricane passing within a 5-degree radius of that location and classifies the risk level from Very Low to Extreme.</li>
+    <li>Developed in two iterations: an original procedural version and a refactored version using vectorized <span class="kw">Pandas</span> operations for significantly improved performance.</li>
   </ul>
 
   <div class="img-grid cols-1">
@@ -707,14 +714,18 @@
 
   <h2 class="section-title">My contributions</h2>
   <ul class="bullets">
-    <li>Geocoding and User Input: Implemented an API workflow that takes a user's text input, searches the web, and converts it into precise latitude and longitude coordinates.</li>
-    <li>Data Processing: Engineered the backend using the Pandas library to clean, filter, and analyze massive NOAA datasets. The algorithm matches historical hurricane coordinate IDs to the user's localized search radius to calculate a precise probability percentage.</li>
-    <li>Geospatial Visualization: Used the Folium library to generate an interactive, navigable global heatmap. The program drops a customized marker at the user's exact location, complete with a tooltip that translates the complex data into a clear, readable risk percentage.</li>
+    <li>Geocoding Module: Built a dedicated <span class="kw">location.py</span> helper using the <span class="kw">OpenStreetMap Nominatim API</span> to convert any city name into precise latitude and longitude coordinates via HTTP requests and JSON parsing.</li>
+    <li>Probability Algorithm: Engineered the core calculation using <span class="kw">Pandas</span> boolean masking to filter the dataset by month and a ±5° geographic bounding box, then counting unique Storm IDs to determine the number of distinct hurricanes. Probability is calculated as unique hurricanes divided by total years in the dataset.</li>
+    <li>Vectorized Refactor: Rewrote the original loop-based hurricane counting into vectorized Pandas operations using <span class="kw">.nunique()</span>, replacing manual iteration with significantly faster boolean filtering.</li>
+    <li>Geospatial Visualization: Used <span class="kw">Folium</span> and <span class="kw">Branca</span> to generate an interactive global heatmap with a color-scaled legend and a location marker displaying a risk classification tooltip directly on the map.</li>
+    <li>Input Validation: Built dedicated functions for location and month validation, including error handling for the CSV loading and geocoding API failures.</li>
   </ul>
 
   <h2 class="section-title">Results</h2>
   <ul class="bullets">
-    <li>The program accurately calculates and visualizes hurricane probability for any city worldwide, processing over 180 years of NOAA data in a navigable interactive map.</li>
+    <li>The program accurately processes over 3 million track records to calculate a personalized hurricane probability for any global location, outputting both a terminal risk classification and a navigable interactive HTML heatmap.</li>
+    <li>The refactored version demonstrated measurable performance improvement over the original through vectorized operations, replacing row-by-row iteration with Pandas filtering across the full dataset.</li>
+    <li>Full source code, documentation, and project explanation publicly available on GitHub at <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal);">Fabricio-Giusti/Nostradamus-Project</a>.</li>
   </ul>
 </section>
 
@@ -794,27 +805,8 @@
 </main>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const sections = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.sidebar nav a');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 150) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').includes(current)) {
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
-</body>
-</html>
+  window.addEventListener('scr
