@@ -54,6 +54,7 @@
     line-height: 1.35;
     margin-bottom: 0.3rem;
   }
+  .sidebar-logo .name a { color: inherit; text-decoration: none; }
 
   .sidebar-logo .sub {
     font-size: 0.7rem;
@@ -109,13 +110,28 @@
 
   .main { margin-left: 230px; flex: 1; }
 
+  /* ---- view router: JS shows one view at a time; no-JS shows all ---- */
+  .view { display: none; }
+  body.js .view.active { display: block; }
+  body:not(.js) .view { display: block; }
+
   .page {
-    max-width: 820px;
+    max-width: 880px;
     padding: 3rem 3.5rem;
     border-bottom: 1px solid var(--border);
   }
 
   .page:last-child { border-bottom: none; }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 1.3rem;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--teal); }
 
   .page-header {
     margin-bottom: 2rem;
@@ -170,19 +186,6 @@
     display: block;
   }
 
-  .profile-photo-placeholder {
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: var(--muted);
-    text-align: center;
-    padding: 1rem;
-    line-height: 1.5;
-    border: 2px dashed var(--border);
-  }
-
   .profile-info h2 {
     font-family: 'Lora', serif;
     font-size: 1.45rem;
@@ -234,12 +237,6 @@
     color: white !important;
   }
 
-  /* Keyword highlight for tool/software names in body text */
-  .kw {
-    font-weight: 600;
-    color: var(--dark);
-  }
-
   .facts-table {
     width: 100%;
     border-collapse: collapse;
@@ -280,6 +277,12 @@
     line-height: 1.75;
     margin-bottom: 0.8rem;
   }
+  p.body-text strong, ul.bullets strong { color: var(--dark); font-weight: 600; }
+
+  .lead {
+    font-size: 0.95rem;
+    color: #444;
+  }
 
   ul.bullets { padding-left: 1.3rem; margin-bottom: 1rem; }
 
@@ -289,11 +292,11 @@
     font-size: 0.9rem;
     line-height: 1.65;
   }
+  ul.bullets li b { color: var(--dark); font-weight: 600; }
 
   .img-grid { display: grid; gap: 0.9rem; margin: 1.4rem 0; }
   .img-grid.cols-1 { grid-template-columns: 1fr; }
   .img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-  .img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 
   .img-wrap img {
     width: 100%;
@@ -337,7 +340,163 @@
     line-height: 1.6;
   }
 
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 1rem; }
+  /* ---------- project index cards ---------- */
+  .cards-intro { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.6rem; }
+
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
+  .proj-grid.stack { grid-template-columns: 1fr; }
+
+  .proj-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  }
+  .proj-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 8px 24px rgba(38,70,83,0.10);
+    transform: translateY(-2px);
+  }
+
+  .proj-card .thumb {
+    aspect-ratio: 16 / 9;
+    background: var(--light);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .proj-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .proj-card .card-body { padding: 1rem 1.15rem 1.2rem; }
+  .proj-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  .proj-card .card-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.55rem;
+  }
+  .proj-card p {
+    font-size: 0.83rem;
+    color: #555;
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+  }
+  .proj-card .tags { margin: 0 0 0.7rem; }
+  .proj-card .open-link {
+    font-size: 0.78rem;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--orange);
+    background: #fdeee9;
+    border: 1px solid #f3c9bc;
+    padding: 0.18rem 0.55rem;
+    border-radius: 2px;
+    margin-bottom: 0.55rem;
+  }
+
+  /* featured (internship + pipeline) card: image left, content right */
+  .proj-card.featured { grid-column: 1 / -1; margin-bottom: 1.3rem; }
+  .proj-card.featured .card-inner { display: grid; grid-template-columns: 300px 1fr; }
+  .proj-card.featured .thumb {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 200px;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+  }
+  .proj-card.featured h3 { font-size: 1.32rem; }
+  .proj-card.featured .card-body { padding: 1.5rem 1.7rem; }
+
+  /* ---------- demo video gallery ---------- */
+  .video-gallery { margin: 1.2rem 0 0.6rem; }
+  .demo-stage {
+    max-width: 460px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #000;
+  }
+  .demo-stage video { width: 100%; display: block; background: #000; }
+  .demo-caption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    margin: 0.6rem 0 1rem;
+  }
+  .demo-thumbs {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+  }
+  .demo-thumb {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: white;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    width: 96px;
+    transition: border-color 0.15s, transform 0.15s;
+    font-family: inherit;
+  }
+  .demo-thumb img { width: 100%; height: 54px; object-fit: cover; display: block; }
+  .demo-thumb span {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--muted);
+    padding: 0.2rem 0.15rem;
+    line-height: 1.25;
+  }
+  .demo-thumb:hover { border-color: var(--teal); transform: translateY(-1px); }
+  .demo-thumb.active { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal) inset; }
+  .demo-thumb.active span { color: var(--teal); font-weight: 600; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.4rem;
+    margin: 1.2rem 0 0.5rem;
+    list-style: none;
+    padding: 0;
+  }
+  .pillars li {
+    font-size: 0.85rem;
+    color: #555;
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .pillars li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.55em;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--teal);
+  }
+  .pillars li b { color: var(--dark); font-weight: 600; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 2rem; margin-top: 1rem; }
 
   .skill-block h3 {
     font-size: 0.78rem;
@@ -369,7 +528,7 @@
   }
 
   .awards-list li:last-child { border-bottom: none; }
-  .awards-list .year { font-weight: 700; color: var(--orange); min-width: 60px; font-size: 0.8rem; }
+  .awards-list .year { font-weight: 700; color: var(--orange); min-width: 72px; font-size: 0.8rem; }
   .awards-list .award-name { font-weight: 600; color: var(--dark); display: block; }
   .awards-list .award-org { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.1rem; }
 
@@ -378,8 +537,12 @@
     .main { margin-left: 0; }
     .page { padding: 2rem 1.5rem; }
     .profile-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .img-grid.cols-2, .img-grid.cols-3 { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .img-grid.cols-2 { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .proj-card.featured .card-inner { grid-template-columns: 1fr; }
+    .proj-card.featured .thumb { border-right: none; border-bottom: 1px solid var(--border); aspect-ratio: 16/9; min-height: 0; }
+    .pillars { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -389,23 +552,26 @@
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
-    <div class="name">Fabricio Giusti<br>Oliveira Monteiro</div>
+    <div class="name"><a href="#profile">Fabricio Giusti<br>Oliveira Monteiro</a></div>
     <div class="sub">Engineering Portfolio</div>
   </div>
   <div class="nav-section-label">Overview</div>
-  <nav><a href="#profile" class="active">Profile</a></nav>
+  <nav><a href="#profile" data-route="profile">Profile</a></nav>
+  <div class="nav-section-label">Experience</div>
+  <nav><a href="#embodyx" data-route="embodyx">EmbodyX &mdash; Robotics Intern</a></nav>
   <div class="nav-section-label">Projects</div>
   <nav>
-    <a href="#aloha">Sim-to-Real VLA Pipeline for Mobile ALOHA</a>
-    <a href="#hockey">EPICS MOBI: USA Blind Hockey Prototype</a>
-    <a href="#piston">3DEXPERIENCE Digital Twin: Dual-Piston Mechanism</a>
-    <a href="#engine">Little Brazer Engine Assembly</a>
-    <a href="#hurricane">The Nostradamus Project</a>
+    <a href="#projects" data-route="projects">All projects</a>
+    <a href="#p/aloha" data-route="p/aloha">Sim-to-Real VLA Pipeline (Mobile ALOHA)</a>
+    <a href="#p/hurricane" data-route="p/hurricane">The Nostradamus Project</a>
+    <a href="#p/hockey" data-route="p/hockey">USA Blind Hockey Prototype</a>
+    <a href="#p/piston" data-route="p/piston">3DEXPERIENCE Digital Twin</a>
+    <a href="#p/engine" data-route="p/engine">Little Brazer Engine Assembly</a>
   </nav>
   <div class="nav-section-label">More</div>
   <nav>
-    <a href="#skills">Skills</a>
-    <a href="#awards">Awards</a>
+    <a href="#skills" data-route="skills">Skills</a>
+    <a href="#awards" data-route="awards">Awards</a>
   </nav>
   <div class="sidebar-footer">
     <a href="mailto:fabriciogiusti28@gmail.com">fabriciogiusti28@gmail.com</a>
@@ -417,396 +583,817 @@
 
 <main class="main">
 
-<!-- ===== PROFILE ===== -->
-<section class="page" id="profile">
-  <div class="page-header"><h1>Profile</h1></div>
+<!-- =================================================================== -->
+<!-- LANDING VIEW: Profile + Projects index + Skills + Awards            -->
+<!-- =================================================================== -->
+<div class="view" id="landing">
 
-  <div class="profile-grid">
-    <div class="profile-photo-box">
-      <img src="foto profissional.png" alt="Fabricio Giusti">
-    </div>
-    <div class="profile-info">
-      <h2>Fabricio Giusti Oliveira Monteiro</h2>
-      <div class="title">Mechanical Engineering, Purdue University, Class of 2028</div>
-      <p>I am a Mechanical Engineering student at Purdue University with a focus on robotics, automation, and the integration of machine learning into physical systems. My work sits at the intersection of hardware and software, taking projects from CAD assemblies and digital twins through to data-driven physical prototypes.</p>
-      <p>I currently serve as an Undergraduate Research Assistant at the Advanced Computation and Artificial Intelligence (ACAI) Lab, developing MuJoCo simulations to train Vision-Language-Action models for the Mobile ALOHA platform. Outside of research, I co-founded the Boiler Soccer Robot Association at Purdue, building fully autonomous humanoid robots for the RoboCup Humanoid League.</p>
-      <div class="profile-links">
-        <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Fabricio-Giusti" target="_blank">GitHub</a>
-        <a href="tel:+17654761840">Phone</a>
-        <a href="FabricioGiusti_Resume_26.pdf" download class="btn-resume">Download Resume</a>
+  <!-- ===== PROFILE ===== -->
+  <section class="page" id="profile">
+    <div class="page-header"><h1>Profile</h1></div>
+
+    <div class="profile-grid">
+      <div class="profile-photo-box">
+        <img src="foto profissional.png" alt="Fabricio Giusti">
+      </div>
+      <div class="profile-info">
+        <h2>Fabricio Giusti Oliveira Monteiro</h2>
+        <div class="title">Mechanical Engineering, Purdue University &middot; Robotics &amp; Embodied AI</div>
+        <p>I am a Mechanical Engineering student at Purdue University focused on robotics, automation, and bringing machine learning into physical systems. My work spans the full stack of a robot &mdash; from CAD and hands-on hardware bring-up to data pipelines, model training, and autonomous deployment.</p>
+        <p>Most recently I was a Robotics Engineer Intern at EmbodyX, where I owned the imitation-learning pipeline for a dual-arm robot end to end &mdash; teleoperation, data collection, Vision-Language-Action model fine-tuning, and on-robot deployment. I am also an Undergraduate Research Assistant at Purdue&rsquo;s ACAI Lab, and I co-founded the Boiler Soccer Robot Association to compete in the RoboCup Humanoid League.</p>
+        <div class="profile-links">
+          <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">LinkedIn</a>
+          <a href="https://github.com/Fabricio-Giusti" target="_blank">GitHub</a>
+          <a href="tel:+17654761840">Phone</a>
+          <a href="FabricioGiusti_Resume_26.pdf" download class="btn-resume">Download Resume</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <table class="facts-table">
-    <tr><td>University</td><td>Purdue University, College of Engineering, West Lafayette, IN</td></tr>
-    <tr><td>Degree</td><td>Bachelor of Science in Mechanical Engineering</td></tr>
-    <tr><td>Minor</td><td>Global Engineering Studies (GEARE Program)</td></tr>
-    <tr><td>GPA</td><td><span class="gpa">3.91 / 4.0</span>, Dean's List every semester</td></tr>
-    <tr><td>Expected Graduation</td><td>May 2028</td></tr>
-    <tr><td>Enrollment</td><td>August 2024</td></tr>
-    <tr><td>Citizenship</td><td>Brazil and Italy (Dual Citizenship)</td></tr>
-    <tr><td>Languages</td><td>Portuguese (Native), English (Fluent), Spanish (Fluent), Italian (Basic), Mandarin (Basic)</td></tr>
-    <tr><td>Contact</td><td>fabriciogiusti28@gmail.com, +1 (765) 476-1840</td></tr>
-  </table>
+    <table class="facts-table">
+      <tr><td>University</td><td>Purdue University, College of Engineering, West Lafayette, IN</td></tr>
+      <tr><td>Degree</td><td>Bachelor of Science in Mechanical Engineering</td></tr>
+      <tr><td>Minor</td><td>Global Engineering Studies (GEARE Program)</td></tr>
+      <tr><td>GPA</td><td><span class="gpa">3.91 / 4.0</span>, Dean&rsquo;s List every semester</td></tr>
+      <tr><td>Expected Graduation</td><td>May 2028</td></tr>
+      <tr><td>Enrollment</td><td>August 2024</td></tr>
+      <tr><td>Citizenship</td><td>Brazil and Italy (Dual Citizenship)</td></tr>
+      <tr><td>Languages</td><td>Portuguese (Native), English (Fluent), Spanish (Fluent), Italian (Basic), Mandarin (Basic)</td></tr>
+      <tr><td>Contact</td><td>fabriciogiusti28@gmail.com, +1 (765) 476-1840</td></tr>
+    </table>
+  </section>
 
-  <h2 class="section-title">About this portfolio</h2>
-  <p class="body-text">This portfolio supplements my resume with a detailed view of selected projects from my undergraduate studies at Purdue University. Each entry covers the project context, my specific contributions, and the outcomes. For questions about any project, please get in touch by email.</p>
-</section>
+  <!-- ===== PROJECTS INDEX ===== -->
+  <section class="page" id="projects">
+    <div class="page-header"><h1>Projects</h1></div>
+    <p class="cards-intro">A selection of my work in robotics, software, and mechanical design. Click any project to open the full write-up.</p>
 
-
-<!-- ===== PROJECT 1: ALOHA ===== -->
-<section class="page" id="aloha">
-  <div class="page-header">
-    <h1>Sim-to-Real VLA Pipeline for Mobile ALOHA</h1>
-    <div class="meta">
-      Role: Simulation Team Member and Environment Developer<br>
-      Lab: Advanced Computation and Artificial Intelligence (ACAI) Lab, Dr. Shengfeng Yang<br>
-      January 2026 to Present
-    </div>
-  </div>
-
-  <div class="tags">
-    <span class="tag teal">Python</span>
-    <span class="tag teal">MuJoCo</span>
-    <span class="tag teal">dm_control</span>
-    <span class="tag teal">LeRobot</span>
-    <span class="tag">Jacobian-based IK</span>
-    <span class="tag">VLA Models</span>
-    <span class="tag">LLM Fine-tuning</span>
-    <span class="tag">NSF ACCESS HPC</span>
-    <span class="tag">Domain Randomization</span>
-    <span class="tag">Digital Twin</span>
-  </div>
-
-  <h2 class="section-title">Overview</h2>
-  <p class="body-text">Training <span class="kw">Vision-Language-Action (VLA)</span> foundation models for robotic manipulation requires massive amounts of demonstration data. Collecting this data physically is expensive, slow, and limits the diversity of scenarios the robot encounters. This project addresses that bottleneck with a comprehensive sim-to-real transfer pipeline built on the <span class="kw">MuJoCo</span> physics engine, generating thousands of diverse manipulation demonstrations for the 17-DOF <span class="kw">Mobile ALOHA</span> platform. The simulation provides multi-camera visual data, including overhead and wrist-mounted views, alongside 14-DOF physical effort feedback from all joints.</p>
-
-  <div class="img-grid cols-2">
-    <div class="img-wrap">
-      <img src="Figure 1.png" alt="High-fidelity MuJoCo simulation of the Mobile ALOHA platform">
-      <p class="img-caption">Figure 1: High-fidelity MuJoCo simulation of the 17-DOF Mobile ALOHA platform.</p>
-    </div>
-    <div class="img-wrap">
-      <img src="Figure 2.png" alt="Left-arm camera visual observation data for VLA model training">
-      <p class="img-caption">Figure 2: Left-arm camera visual observation data generated for VLA model training.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">My contributions</h2>
-  <ul class="bullets">
-    <li>Kinematics and Policy Development: Engineered four custom scripted policies for complex bimanual tasks, including tube-picking and mid-air handovers, using a <span class="kw">Jacobian-based damped least squares IK</span> solver.</li>
-    <li>Advanced Manipulation Features: Implemented physical intelligence features into the control policies, including tube-position feedback to compensate for pendulum swing, grasp verification, and descent collision detection.</li>
-    <li>Domain Randomization: Developed a procedural system using <span class="kw">dm_control</span> to generate randomized distractor objects across the workspace, varying object properties, positions, and environmental conditions to ensure the VLA model generalizes rather than memorizes a static scene.</li>
-    <li>Data Pipeline and Quality Control: Built a dense episode scoring system to evaluate and filter simulation runs on a scale from Perfect to Catastrophic, then export multi-modal data into <span class="kw">LeRobot v3.0</span> format for model training.</li>
-  </ul>
-
-  <div class="img-grid cols-1">
-    <div class="img-wrap">
-      <img src="Figure 3.png" alt="Procedurally generated distractor objects for domain randomization">
-      <p class="img-caption">Figure 3: Procedurally generated distractor objects added to the workspace for domain randomization.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">Results</h2>
-  <ul class="bullets">
-    <li>The pipeline generates standardized datasets recording joint states, velocities, efforts, and action commands, providing structured training data for VLA model fine-tuning.</li>
-    <li>Pipeline output is actively being used to fine-tune pre-trained VLA models via <span class="kw">NSF ACCESS HPC</span> resources, reducing dependency on manual human teleoperation for data collection.</li>
-    <li>Successfully fine-tuned VLA models and LLMs in Python to automate bookshelf organization tasks on the real-world Mobile ALOHA platform.</li>
-  </ul>
-</section>
-
-
-<!-- ===== PROJECT 2: BLIND HOCKEY ===== -->
-<section class="page" id="hockey">
-  <div class="page-header">
-    <h1>EPICS MOBI: USA Blind Hockey Prototype</h1>
-    <div class="meta">
-      Role: Design Lead and Electrical Team Member<br>
-      Engineering Projects in Community Service (EPICS), Mobility (MOBI), Purdue University<br>
-      August 2024 to May 2025
-    </div>
-  </div>
-
-  <div class="tags">
-    <span class="tag teal">Fusion 360</span>
-    <span class="tag teal">KiCad</span>
-    <span class="tag teal">LTspice</span>
-    <span class="tag">Polyurethane</span>
-    <span class="tag">3D Printing</span>
-    <span class="tag">PCB Design</span>
-    <span class="tag">Material Testing</span>
-    <span class="tag">Structural Analysis</span>
-  </div>
-
-  <h2 class="section-title">Overview</h2>
-  <ul class="bullets">
-    <li>Project developed in partnership with USA Blind Hockey through the EPICS Mobility program at Purdue University.</li>
-    <li>Current blind hockey pucks use metal ball bearings for sound. They are heavy, frequently injure players, and break after a single game, making the sport unnecessarily expensive to play.</li>
-    <li>The objective was to design and prototype a reusable, safer puck that produces consistent sound via electronic components rather than physical bearings, while withstanding the demands of competitive play.</li>
-  </ul>
-
-  <div class="img-grid cols-2">
-    <div class="img-wrap">
-      <img src="Figure 4.png" alt="Early CAD iteration of the snap-fit puck design">
-      <p class="img-caption">Figure 4: Early CAD iteration of the snap-fit puck design. The team ultimately pivoted to a threaded closure to improve durability and ease of maintenance.</p>
-    </div>
-    <div class="img-wrap">
-      <img src="Figure 5.png" alt="Physical 3D-printed Polyurethane prototype">
-      <p class="img-caption">Figure 5: The physical 3D-printed Polyurethane prototype, showing the internal cavity designed to securely house the electronic sound components.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">My contributions</h2>
-  <ul class="bullets">
-    <li>Directed a five-member team as Design Lead through the full project lifecycle, coordinating both the electrical and mechanical workstreams.</li>
-    <li>Electrical System Design: Developed the puck's internal electronics using <span class="kw">KiCad</span> for PCB layout and <span class="kw">LTspice</span> for circuit simulation. The primary challenge was designing the circuit to withstand severe impact forces without damaging the components.</li>
-    <li>Mechanical Design: Used <span class="kw">Fusion 360</span> to conduct structural analysis and identify weak points in early models. Iterated from a snap-fit enclosure to a threaded and screwed closure, improving durability and simplifying battery replacement.</li>
-    <li>Geometry Optimization: Drop tests revealed that sharp angles created stress concentrations upon impact. Redesigned the geometry with curved edges and fillets to better distribute impact forces.</li>
-    <li>Material Selection: Evaluated <span class="kw">PETG</span> for early iterations and selected <span class="kw">Polyurethane</span> for the final prototype based on superior impact resistance, energy absorption, and performance at low temperatures.</li>
-    <li>Conducted real-user testing with a hockey player to validate mechanical durability, sound output consistency, and waterproofing under game conditions.</li>
-  </ul>
-
-  <h2 class="section-title">Results</h2>
-  <ul class="bullets">
-    <li>The final Polyurethane prototype withstood 500 N of force during drop testing while maintaining waterproofing and consistent sound output.</li>
-    <li>Delivered a functional proof-of-concept for USA Blind Hockey demonstrating a safer, reusable, multi-game puck. Future development will focus on refining internal component mounting and preparing the enclosure for scalable manufacturing.</li>
-  </ul>
-
-  <div class="result-highlight">
-    Final prototype validated: 500 N impact resistance, consistent sound output, waterproof, tested with a real athlete.
-  </div>
-</section>
-
-
-<!-- ===== PROJECT 3: DIGITAL TWIN ===== -->
-<section class="page" id="piston">
-  <div class="page-header">
-    <h1>3DEXPERIENCE Digital Twin: Dual-Piston Mechanism</h1>
-    <div class="meta">
-      Purdue University Milestone Course, Dassault Systemes<br>
-      Tools: CATIA, 3DEXPERIENCE (Part Design, Assembly Design, Creative Experience), Apple Vision Pro
-    </div>
-  </div>
-
-  <div class="tags">
-    <span class="tag teal">CATIA</span>
-    <span class="tag teal">3DEXPERIENCE</span>
-    <span class="tag">Apple Vision Pro</span>
-    <span class="tag">Part Design</span>
-    <span class="tag">Assembly Design</span>
-    <span class="tag">Kinematics</span>
-    <span class="tag">AR/VR Integration</span>
-    <span class="tag">Digital Twin</span>
-  </div>
-
-  <h2 class="section-title">Overview</h2>
-  <ul class="bullets">
-    <li>The objective of this project was to design a functional mechanical assembly from the ground up and translate it into an interactive digital twin for Augmented Reality (AR) visualization.</li>
-    <li>Using the Dassault Systemes 3DEXPERIENCE platform, a complete dual-piston mechanism was modeled and prepared for immersive simulation on Apple Vision Pro.</li>
-    <li>Components designed include a manual hand-crank wheel, a two-gear power transmission system, a main crankshaft, connecting rods, two piston heads, and a solid cylinder block.</li>
-  </ul>
-
-  <div class="img-grid cols-1">
-    <div class="img-wrap">
-      <img src="Figure 6.png" alt="Fully constrained dual-piston assembly in CATIA">
-      <p class="img-caption">Figure 6: The fully constrained dual-piston assembly in CATIA, featuring the hand-crank input, gear train, and cylinder block.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">My contributions</h2>
-  <ul class="bullets">
-    <li>Component Modeling: Engineered all individual components using the <span class="kw">Part Design</span> application within <span class="kw">3DEXPERIENCE</span>.</li>
-    <li>Assembly and Motion: Established mechanical relationships between parts in the <span class="kw">Assembly Design</span> environment. Applied precise joint constraints including revolute joints for the gear train and cylindrical constraints for the pistons, ensuring the assembly possesses realistic kinematic motion.</li>
-    <li>AR Integration: Used the <span class="kw">Creative Experience</span> application to deploy the fully constrained kinematic assembly to the Dassault Systemes app on an <span class="kw">Apple Vision Pro</span> headset, enabling users to view the digital twin in 3D space and analyze internal motion in real time.</li>
-  </ul>
-
-  <h2 class="section-title">Results</h2>
-  <ul class="bullets">
-    <li>Demonstrated the complete lifecycle of a <span class="kw">digital twin</span>: from foundational CAD modeling and kinematic assembly to immersive AR visualization on Apple Vision Pro.</li>
-    <li>The workflow has direct industrial applications including risk-free operator training, synthetic kinematic data generation for predictive maintenance models, and pre-manufacturing design validation in a mixed-reality environment.</li>
-  </ul>
-</section>
-
-
-<!-- ===== PROJECT 4: LITTLE BRAZER ===== -->
-<section class="page" id="engine">
-  <div class="page-header">
-    <h1>Little Brazer Engine Assembly</h1>
-    <div class="meta">
-      Purdue University, MFET 164<br>
-      Tools: Siemens NX, Teamcenter (PLM), Bottom-Up Assembly Modeling
-    </div>
-  </div>
-
-  <div class="tags">
-    <span class="tag teal">Siemens NX</span>
-    <span class="tag teal">Teamcenter</span>
-    <span class="tag">PLM</span>
-    <span class="tag">Bottom-Up Assembly</span>
-    <span class="tag">Geometric Constraints</span>
-    <span class="tag">Version Control</span>
-  </div>
-
-  <h2 class="section-title">Overview</h2>
-  <ul class="bullets">
-    <li>Designed and assembled a functional mechanical model of a Little Brazer engine using <span class="kw">Siemens NX</span> and <span class="kw">Teamcenter</span>, following industry-standard CAD and Product Lifecycle Management (PLM) workflows.</li>
-    <li>Individual components include the engine body, cooling cylinder, crankshaft, cam, connecting rod, and wrist pin brackets, all modeled from scratch.</li>
-  </ul>
-
-  <div class="img-grid cols-1">
-    <div class="img-wrap">
-      <img src="Figure 7.png" alt="Little Brazer Engine mid-assembly in Siemens NX">
-      <p class="img-caption">Figure 7: The Little Brazer Engine mid-assembly in Siemens NX, highlighting the strict geometric constraints applied to the components to ensure proper kinematic motion.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">My contributions</h2>
-  <ul class="bullets">
-    <li>Part Design: Engineered all individual mechanical components from scratch using <span class="kw">Siemens NX</span>.</li>
-    <li>Assembly and Constraints: Performed a bottom-up assembly applying concentric, distance, and touch constraints to ensure the crankshaft and piston rod articulate correctly without mechanical interference.</li>
-    <li>Data Management: Used <span class="kw">Teamcenter PLM</span> to manage CAD files, handle version control, and maintain structural integrity of sub-assemblies, mirroring industry-standard practices.</li>
-  </ul>
-
-  <h2 class="section-title">Results</h2>
-  <ul class="bullets">
-    <li>Produced a fully constrained, kinematically valid engine assembly, demonstrating the ability to design for manufacturability, manage sub-assemblies with version control, and validate kinematic accuracy entirely within a PLM environment before physical production.</li>
-  </ul>
-</section>
-
-
-<!-- ===== PROJECT 5: HURRICANE ===== -->
-<section class="page" id="hurricane">
-  <div class="page-header">
-    <h1>The Nostradamus Project: Global Hurricane Predictor</h1>
-    <div class="meta">
-      Role: Creator and Developer | September 2024 to December 2024 |
-      <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal); text-decoration:none;">View on GitHub</a>
-    </div>
-  </div>
-
-  <div class="tags">
-    <span class="tag teal">Python</span>
-    <span class="tag teal">Pandas</span>
-    <span class="tag teal">Folium</span>
-    <span class="tag teal">OpenStreetMap API</span>
-    <span class="tag">IBTrACS Dataset</span>
-    <span class="tag">NOAA NCEI</span>
-    <span class="tag">Geospatial Mapping</span>
-    <span class="tag">Vectorized Data Processing</span>
-  </div>
-
-  <h2 class="section-title">Overview</h2>
-  <ul class="bullets">
-    <li>A <span class="kw">Python</span>-based analytical tool that processes the complete <span class="kw">IBTrACS v04r01</span> dataset from NOAA, containing over 3 million cyclone track records from all ocean basins from 1842 to the present (~310 MB).</li>
-    <li>Given any city in the world and a month of the year, the program calculates the historical probability of a hurricane passing within a 5-degree radius of that location and classifies the risk level from Very Low to Extreme.</li>
-    <li>Developed in two iterations: an original procedural version and a refactored version using vectorized <span class="kw">Pandas</span> operations for significantly improved performance.</li>
-  </ul>
-
-  <div class="img-grid cols-1">
-    <div class="img-wrap">
-      <img src="Figure 8.png" alt="Interactive Folium heatmap showing global hurricane frequency">
-      <p class="img-caption">Figure 8: An interactive Folium heatmap generated by the program, visualizing the global frequency of hurricanes in October. The map features a personalized risk calculation marker placed in Miami, Florida.</p>
-    </div>
-  </div>
-
-  <h2 class="section-title">My contributions</h2>
-  <ul class="bullets">
-    <li>Geocoding Module: Built a dedicated <span class="kw">location.py</span> helper using the <span class="kw">OpenStreetMap Nominatim API</span> to convert any city name into precise latitude and longitude coordinates via HTTP requests and JSON parsing.</li>
-    <li>Probability Algorithm: Engineered the core calculation using <span class="kw">Pandas</span> boolean masking to filter the dataset by month and a ±5° geographic bounding box, then counting unique Storm IDs to determine the number of distinct hurricanes. Probability is calculated as unique hurricanes divided by total years in the dataset.</li>
-    <li>Vectorized Refactor: Rewrote the original loop-based hurricane counting into vectorized Pandas operations using <span class="kw">.nunique()</span>, replacing manual iteration with significantly faster boolean filtering.</li>
-    <li>Geospatial Visualization: Used <span class="kw">Folium</span> and <span class="kw">Branca</span> to generate an interactive global heatmap with a color-scaled legend and a location marker displaying a risk classification tooltip directly on the map.</li>
-    <li>Input Validation: Built dedicated functions for location and month validation, including error handling for the CSV loading and geocoding API failures.</li>
-  </ul>
-
-  <h2 class="section-title">Results</h2>
-  <ul class="bullets">
-    <li>The program accurately processes over 3 million track records to calculate a personalized hurricane probability for any global location, outputting both a terminal risk classification and a navigable interactive HTML heatmap.</li>
-    <li>The refactored version demonstrated measurable performance improvement over the original through vectorized operations, replacing row-by-row iteration with Pandas filtering across the full dataset.</li>
-    <li>Full source code, documentation, and project explanation publicly available on GitHub at <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal);">Fabricio-Giusti/Nostradamus-Project</a>.</li>
-  </ul>
-</section>
-
-
-<!-- ===== SKILLS ===== -->
-<section class="page" id="skills">
-  <div class="page-header"><h1>Skills</h1></div>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <h3>CAD and Engineering Tools</h3>
-      <ul>
-        <li>Fusion 360</li>
-        <li>Siemens NX</li>
-        <li>Teamcenter</li>
-        <li>CATIA</li>
-        <li>3DEXPERIENCE</li>
-        <li>MuJoCo</li>
-        <li>KiCad</li>
-        <li>LTspice</li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <h3>Programming</h3>
-      <ul>
-        <li>Python</li>
-        <li>MATLAB</li>
-        <li>C</li>
-        <li>Pandas</li>
-        <li>Folium</li>
-        <li>dm_control</li>
-        <li>LeRobot</li>
-        <li>REST APIs</li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <h3>Languages</h3>
-      <ul>
-        <li>Portuguese, Native</li>
-        <li>English, Fluent</li>
-        <li>Spanish, Fluent</li>
-        <li>Italian, Basic</li>
-        <li>Mandarin, Basic</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===== AWARDS ===== -->
-<section class="page" id="awards">
-  <div class="page-header"><h1>Awards and Certificates</h1></div>
-  <ul class="awards-list">
-    <li>
-      <span class="year">2025</span>
-      <div>
-        <span class="award-name">H. William Bottomley Research Scholarship</span>
-        <span class="award-org">Purdue University</span>
+    <!-- Featured: EmbodyX internship -->
+    <a class="proj-card featured" href="#embodyx">
+      <div class="card-inner">
+        <div class="thumb"><img src="media/ram_insert.jpg" alt="Dual-arm robot performing an autonomous task"></div>
+        <div class="card-body">
+          <span class="badge">Internship &middot; Summer 2026</span>
+          <h3>Robotics Engineer Intern &mdash; EmbodyX</h3>
+          <div class="card-meta">Autonomous Vision-Language-Action robots &middot; San Mateo, CA</div>
+          <p>Owned the full imitation-learning pipeline for a dual-arm robot &mdash; from VR teleoperation and data collection to <strong>&pi;0.5</strong> model fine-tuning and autonomous on-robot deployment &mdash; plus edge-inference optimization, an applied vision system, humanoid deployment, and full-stack web tooling.</p>
+          <div class="tags">
+            <span class="tag teal">ROS 2</span>
+            <span class="tag teal">&pi;0.5 / openpi</span>
+            <span class="tag teal">PyTorch / JAX</span>
+            <span class="tag">NVIDIA Jetson</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+          <span class="open-link">Open internship overview &rarr;</span>
+        </div>
       </div>
-    </li>
-    <li>
-      <span class="year">2024 to 2025</span>
-      <div>
-        <span class="award-name">Dean's List and Semester Honors Recognition</span>
-        <span class="award-org">Purdue University, every semester since enrollment</span>
+    </a>
+
+    <!-- Academic / personal projects, robotics-first -->
+    <div class="proj-grid">
+      <a class="proj-card" href="#p/aloha">
+        <div class="thumb"><img src="Figure 1.png" alt="MuJoCo simulation of Mobile ALOHA"></div>
+        <div class="card-body">
+          <h3>Sim-to-Real VLA Pipeline for Mobile ALOHA</h3>
+          <div class="card-meta">Research &middot; ACAI Lab, Purdue &middot; 2026&ndash;present</div>
+          <p>Built scripted bimanual policies and a domain-randomized MuJoCo pipeline that generates manipulation data to fine-tune Vision-Language-Action models.</p>
+          <div class="tags"><span class="tag teal">MuJoCo</span><span class="tag teal">Python</span><span class="tag">VLA Models</span></div>
+          <span class="open-link">Open project &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#p/hurricane">
+        <div class="thumb"><img src="Figure 8.png" alt="Interactive hurricane heatmap"></div>
+        <div class="card-body">
+          <h3>The Nostradamus Project</h3>
+          <div class="card-meta">Personal build &middot; 2024</div>
+          <p>A Python tool that processes 3M+ NOAA cyclone records to compute any city&rsquo;s monthly hurricane probability, with an interactive risk map.</p>
+          <div class="tags"><span class="tag teal">Python</span><span class="tag teal">pandas</span><span class="tag">Geospatial</span></div>
+          <span class="open-link">Open project &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#p/hockey">
+        <div class="thumb"><img src="Figure 5.png" alt="3D-printed blind hockey puck prototype"></div>
+        <div class="card-body">
+          <h3>USA Blind Hockey Prototype</h3>
+          <div class="card-meta">EPICS MOBI &middot; Design Lead &middot; 2024&ndash;25</div>
+          <p>Led a five-person team designing a safer, electronic-sound hockey puck &mdash; PCB, structural analysis, and materials &mdash; validated to 500 N impact.</p>
+          <div class="tags"><span class="tag teal">Fusion 360</span><span class="tag teal">KiCad</span><span class="tag">PCB Design</span></div>
+          <span class="open-link">Open project &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#p/piston">
+        <div class="thumb"><img src="Figure 6.png" alt="Dual-piston assembly in CATIA"></div>
+        <div class="card-body">
+          <h3>3DEXPERIENCE Digital Twin</h3>
+          <div class="card-meta">Coursework &middot; Dassault Syst&egrave;mes</div>
+          <p>Modeled a dual-piston mechanism and deployed it as an interactive AR digital twin on Apple Vision Pro.</p>
+          <div class="tags"><span class="tag teal">CATIA</span><span class="tag teal">3DEXPERIENCE</span><span class="tag">AR / VR</span></div>
+          <span class="open-link">Open project &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#p/engine">
+        <div class="thumb"><img src="Figure 7.png" alt="Little Brazer engine assembly in Siemens NX"></div>
+        <div class="card-body">
+          <h3>Little Brazer Engine Assembly</h3>
+          <div class="card-meta">Coursework &middot; MFET 164</div>
+          <p>Modeled and constrained a full engine assembly in Siemens NX, managed with Teamcenter PLM version control.</p>
+          <div class="tags"><span class="tag teal">Siemens NX</span><span class="tag teal">Teamcenter</span><span class="tag">PLM</span></div>
+          <span class="open-link">Open project &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="page" id="skills">
+    <div class="page-header"><h1>Skills</h1></div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h3>Software</h3>
+        <ul>
+          <li>Python</li><li>C++</li><li>C</li><li>MATLAB</li>
+          <li>Bash / Linux</li><li>Git</li><li>Google Cloud, Azure</li><li>REST APIs</li>
+        </ul>
       </div>
-    </li>
-    <li>
-      <span class="year">2025</span>
-      <div>
-        <span class="award-name">Machine Learning Specialization</span>
-        <span class="award-org">Stanford University (Coursera)</span>
+      <div class="skill-block">
+        <h3>Robotics &amp; ML</h3>
+        <ul>
+          <li>ROS 2</li><li>PyTorch, JAX</li><li>MuJoCo</li><li>LeRobot</li>
+          <li>NumPy, pandas</li><li>Weights &amp; Biases</li><li>Hugging Face</li><li>NVIDIA Jetson (edge)</li>
+        </ul>
       </div>
-    </li>
-  </ul>
-</section>
+      <div class="skill-block">
+        <h3>CAD &amp; Engineering</h3>
+        <ul>
+          <li>Fusion 360</li><li>Siemens NX</li><li>Teamcenter</li><li>CATIA / 3DEXPERIENCE</li>
+          <li>KiCad</li><li>LTspice</li><li>Soldering &amp; bring-up</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Languages</h3>
+        <ul>
+          <li>Portuguese, Native</li><li>English, Fluent</li><li>Spanish, Fluent</li>
+          <li>Italian, Basic</li><li>Mandarin, Basic</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AWARDS ===== -->
+  <section class="page" id="awards">
+    <div class="page-header"><h1>Awards and Certificates</h1></div>
+    <ul class="awards-list">
+      <li>
+        <span class="year">2026</span>
+        <div>
+          <span class="award-name">Outstanding Sophomore Award, Finalist</span>
+          <span class="award-org">Purdue University</span>
+        </div>
+      </li>
+      <li>
+        <span class="year">2026</span>
+        <div>
+          <span class="award-name">H. William Bottomley Research Scholarship</span>
+          <span class="award-org">Purdue University</span>
+        </div>
+      </li>
+      <li>
+        <span class="year">2025</span>
+        <div>
+          <span class="award-name">Machine Learning Specialization</span>
+          <span class="award-org">Stanford University (Coursera)</span>
+        </div>
+      </li>
+      <li>
+        <span class="year">2024&ndash;25</span>
+        <div>
+          <span class="award-name">Dean&rsquo;s List and Semester Honors Recognition</span>
+          <span class="award-org">Purdue University, every semester since enrollment</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</div><!-- /landing -->
+
+
+<!-- =================================================================== -->
+<!-- EMBODYX HUB                                                         -->
+<!-- =================================================================== -->
+<div class="view" id="embodyx">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>Robotics Engineer Intern &mdash; EmbodyX</h1>
+      <div class="meta">
+        EmbodyX &middot; San Mateo, CA &middot; May &ndash; August 2026<br>
+        Embodied-AI startup building Vision-Language-Action (VLA) models and robot-data pipelines
+      </div>
+    </div>
+
+    <p class="body-text lead">As a robotics engineer at EmbodyX I owned the complete imitation-learning lifecycle for a dual-arm robot &mdash; teleoperated data collection, VLA model fine-tuning, and autonomous on-robot deployment. Around that core, I worked on edge-inference optimization, an applied computer-vision system, humanoid robots, and the company&rsquo;s full-stack web tooling.</p>
+    <p class="body-text">I built the robot cell itself as well as the software &mdash; physically assembling and wiring the dual-arm workstation, mounting the cameras, running the cabling, and soldering custom leads &mdash; so I owned the system end to end, from the hardware bring-up to the trained policy. The autonomous behaviours I trained and deployed were used in the company&rsquo;s live robot demonstrations.</p>
+
+    <ul class="pillars">
+      <li><b>VLA deployment &amp; edge optimization</b> &mdash; running &pi;0.5 policies fast enough on real and edge hardware.</li>
+      <li><b>Data-pipeline engineering</b> &mdash; the teleoperate &rarr; record &rarr; convert &rarr; train data flow.</li>
+      <li><b>Applied vision / VLM</b> &mdash; reading printed text off objects to drive sorting.</li>
+      <li><b>Robotics &harr; web integration</b> &mdash; connecting real robots to a production web platform.</li>
+    </ul>
+
+    <h2 class="section-title">Autonomous demonstrations</h2>
+    <p class="body-text">Trained &pi;0.5 policies running autonomously on the dual-arm robot. Use the thumbnails to switch tasks.</p>
+    <div class="video-gallery">
+      <div class="demo-stage">
+        <video id="demoVideo" controls autoplay muted loop playsinline poster="media/ram_insert.jpg">
+          <source src="media/ram_insert.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="demo-caption" id="demoCaption">Server RAM / component insertion &mdash; autonomous, dual-arm.</div>
+      <div class="demo-thumbs">
+        <button class="demo-thumb active" data-src="media/ram_insert.mp4" data-poster="media/ram_insert.jpg" data-cap="Server RAM / component insertion &mdash; autonomous, dual-arm.">
+          <img src="media/ram_insert.jpg" alt=""><span>RAM insert</span>
+        </button>
+        <button class="demo-thumb" data-src="media/pack.mp4" data-poster="media/pack.jpg" data-cap="Packing objects into a container &mdash; autonomous, dual-arm.">
+          <img src="media/pack.jpg" alt=""><span>Packing</span>
+        </button>
+        <button class="demo-thumb" data-src="media/scan.mp4" data-poster="media/scan.jpg" data-cap="Scanning / barcode task &mdash; autonomous, dual-arm.">
+          <img src="media/scan.jpg" alt=""><span>Scan</span>
+        </button>
+        <button class="demo-thumb" data-src="media/stacking.mp4" data-poster="media/stacking.jpg" data-cap="Stacking cubes &mdash; autonomous, dual-arm.">
+          <img src="media/stacking.jpg" alt=""><span>Stacking</span>
+        </button>
+        <button class="demo-thumb" data-src="media/ethernet.mp4" data-poster="media/ethernet.jpg" data-cap="Ethernet cable insertion &mdash; autonomous, dual-arm.">
+          <img src="media/ethernet.jpg" alt=""><span>Cable insert</span>
+        </button>
+        <button class="demo-thumb" data-src="media/pharmacy.mp4" data-poster="media/pharmacy.jpg" data-cap="Presenting a flask for the vision system to read its label.">
+          <img src="media/pharmacy.jpg" alt=""><span>Label read</span>
+        </button>
+      </div>
+    </div>
+
+    <h2 class="section-title">What I worked on</h2>
+    <div class="proj-grid">
+      <a class="proj-card featured" href="#embodyx/pipeline">
+        <div class="card-inner">
+          <div class="thumb"><img src="media/cameras_grid.jpg" alt="Three-camera view the policy sees"></div>
+          <div class="card-body">
+            <span class="badge">Core focus</span>
+            <h3>End-to-End Imitation-Learning Pipeline</h3>
+            <div class="card-meta">Dual-arm robot &middot; teleoperate &rarr; record &rarr; convert &rarr; train &rarr; deploy</div>
+            <p>The heart of my internship: the full data-to-policy pipeline &mdash; VR teleoperation, a multi-camera episode recorder, dataset conversion and curation, and <strong>&pi;0.5</strong> fine-tuning on remote GPU clusters. 500+ demonstrations across ~34 curated datasets.</p>
+            <div class="tags">
+              <span class="tag teal">ROS 2</span><span class="tag teal">Meta Quest</span>
+              <span class="tag teal">&pi;0.5 / openpi</span><span class="tag">LeRobot</span><span class="tag">PyTorch / JAX</span>
+            </div>
+            <span class="open-link">Open &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#embodyx/deploy">
+        <div class="card-body">
+          <h3>Real-Time Deployment &amp; Edge Optimization</h3>
+          <div class="card-meta">Serving &middot; latency &middot; on-device inference</div>
+          <p>Served trained policies to the real robot with low latency and ran them on-device on an NVIDIA Jetson Orin &mdash; async real-time chunking, a latency campaign, and a rigorous benchmark of a quantized C++ backend vs. PyTorch.</p>
+          <div class="tags"><span class="tag teal">Jetson Orin</span><span class="tag teal">WebSockets</span><span class="tag">Real-Time Chunking</span><span class="tag">CUDA</span></div>
+          <span class="open-link">Open &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#embodyx/pharmacy">
+        <div class="card-body">
+          <h3>Applied Vision &mdash; Reading Labels</h3>
+          <div class="card-meta">Vision-language model + robot</div>
+          <p>A proof-of-concept where the robot presents an object and a self-hosted vision-language model (Qwen2.5-VL) reads a printed date to sort items, with a real anti-hallucination pipeline.</p>
+          <div class="tags"><span class="tag teal">Qwen2.5-VL</span><span class="tag teal">llama.cpp / vLLM</span><span class="tag">OpenCV</span></div>
+          <span class="open-link">Open &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#embodyx/humanoids">
+        <div class="card-body">
+          <h3>Humanoid Robot Deployment</h3>
+          <div class="card-meta">Remote &mdash; robots overseas</div>
+          <p>Trained and deployed &pi;0.5 policies on humanoid robots, working entirely remotely from the US &mdash; root-causing control issues from recorded runs and delivering fixes with the on-site team.</p>
+          <div class="tags"><span class="tag teal">AgiBot G1 / G2</span><span class="tag teal">&pi;0.5</span><span class="tag">Remote Debugging</span></div>
+          <span class="open-link">Open &rarr;</span>
+        </div>
+      </a>
+
+      <a class="proj-card" href="#embodyx/platform">
+        <div class="card-body">
+          <h3>Robots into a Web Platform</h3>
+          <div class="card-meta">Full-stack &middot; Django + React</div>
+          <p>Brought the robot first-class into the company&rsquo;s internal robot-learning web platform: a robot-side agent, a ROS 2 bridge, and portal features, across a Django backend and a React frontend.</p>
+          <div class="tags"><span class="tag teal">Django / DRF</span><span class="tag teal">React / TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">ROS 2</span></div>
+          <span class="open-link">Open &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</div><!-- /embodyx -->
+
+
+<!-- ===== EMBODYX &gt; PIPELINE ===== -->
+<div class="view" id="emb-pipeline">
+  <section class="page">
+    <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
+    <div class="page-header">
+      <h1>End-to-End Imitation-Learning Pipeline</h1>
+      <div class="meta">Dual-arm (Universal Robots UR3) robot &middot; teleoperation &rarr; recording &rarr; conversion &rarr; &pi;0.5 training &rarr; deployment</div>
+    </div>
+    <div class="tags">
+      <span class="tag teal">ROS 2</span><span class="tag teal">Meta Quest (VR)</span><span class="tag teal">&pi;0.5 / openpi</span>
+      <span class="tag teal">LeRobot</span><span class="tag teal">PyTorch / JAX</span><span class="tag">HDF5</span>
+      <span class="tag">FSDP training</span><span class="tag">Weights &amp; Biases</span><span class="tag">H100 / B300</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">This was the heart of my internship: the pipeline that turns human demonstrations into an autonomous robot policy, for a bimanual dual-arm robot. Four stages &mdash; teleoperate, record, convert, train &mdash; feed a fifth, deployment. I built the software for each, so a task idea could become a demonstrable, autonomous robot behaviour end to end.</p>
+
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <video controls muted loop playsinline poster="media/cameras_grid.jpg" style="width:100%;display:block;border-radius:3px;">
+          <source src="media/cameras_grid.mp4" type="video/mp4">
+        </video>
+        <p class="img-caption">What the policy actually sees &mdash; the head plus left/right wrist camera streams, each resized to 224&times;224 before inference.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">What I built</h2>
+    <ul class="bullets">
+      <li><b>Teleoperation.</b> A VR system driving both arms and grippers in real time from a Meta Quest headset (over <span>ur_rtde</span> at 30&nbsp;Hz), with a safety model I designed: motion off by default, an explicit operator engage-gate, per-arm freeze, and a strict &ldquo;never let two controllers fight for one arm&rdquo; contract &mdash; covered by off-robot unit tests.</li>
+      <li><b>Recording.</b> A multi-camera episode recorder capturing time-synchronized joints, grippers, and three camera streams, with a self-correcting timing grid and a freshness gate that guarantees <b>zero duplicate frames</b> &mdash; clean training data at an honest, measured rate.</li>
+      <li><b>Data engineering.</b> Converters from raw HDF5 recordings into the LeRobot dataset format, plus the dataset library itself. I curated <b>~34 datasets</b> and fixed real data-quality problems: camera-freeze artifacts, inverted wrist cameras, mixed resolutions and frame-rates, and multi-task merges.</li>
+      <li><b>Training.</b> Fine-tuned &pi;0.5 (openpi) Vision-Language-Action models on remote H100 / B300 GPU clusters &mdash; writing the per-robot input/output transforms and data configs, running sharded (FSDP) training, and tracking experiments in Weights &amp; Biases.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Recorded <b>500+ demonstration episodes</b> and trained multiple task policies that run autonomously on the real robot.</li>
+      <li>The datasets and the training recipe became a reusable baseline for the team.</li>
+      <li>The resulting autonomous behaviours were shown in the company&rsquo;s live robot demonstrations.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== EMBODYX &gt; DEPLOY / EDGE ===== -->
+<div class="view" id="emb-deploy">
+  <section class="page">
+    <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
+    <div class="page-header">
+      <h1>Real-Time Deployment &amp; Edge Optimization</h1>
+      <div class="meta">Serving trained policies to the robot &middot; latency reduction &middot; on-device edge inference</div>
+    </div>
+    <div class="tags">
+      <span class="tag teal">NVIDIA Jetson Orin</span><span class="tag teal">PyTorch</span><span class="tag teal">JAX</span>
+      <span class="tag teal">WebSockets</span><span class="tag">Real-Time Chunking</span><span class="tag">CUDA</span>
+      <span class="tag">ggml / GGUF</span><span class="tag">A/B benchmarking</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">A trained policy still has to run on the real robot fast enough to be smooth. I built the serving stack and then optimized it &mdash; in the cloud, on a local box, and on-device at the edge.</p>
+
+    <h2 class="section-title">What I built</h2>
+    <ul class="bullets">
+      <li><b>Serving architecture.</b> A policy-server &harr; robot-client split over websockets: the GPU runs the model and streams action chunks; the robot client feeds observations and drives the arms.</li>
+      <li><b>Asynchronous real-time chunking.</b> A two-thread control loop that removes the per-chunk pause where the arm would otherwise freeze to &ldquo;think.&rdquo; I implemented the guided chunk-swapping method from the research literature and, in doing so, <b>found and fixed a subtle guidance sign error</b> that had been missed.</li>
+      <li><b>Latency campaign.</b> A per-stage profiler that pinned the real bottleneck (network jitter, not the model), plus a JPEG payload path that <b>roughly halved</b> end-to-end latency.</li>
+      <li><b>Five GPU targets.</b> Stood up serving on an edge Jetson Orin, a local desktop GPU, two cloud GPUs, and a university cluster &mdash; each with its own driver and GPU-architecture quirks to work around.</li>
+      <li><b>Edge study.</b> Profiled inference on the Jetson Orin (including finding a Python GIL-contention issue and tuning power modes) and benchmarked a quantized C++ backend against PyTorch with rigorous interleaved A/B tests.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>A smooth, deployable serving path used for the live demonstrations.</li>
+      <li>The C++ backend was <b>~1.9&times; faster in isolation</b>, but under real camera load the advantage nearly vanished &mdash; so I made the evidence-based call to keep the simpler PyTorch backend and avoid carrying dead complexity.</li>
+    </ul>
+    <div class="result-highlight">A well-argued negative result &mdash; measuring that an optimization <em>doesn&rsquo;t</em> pay off in the real setup &mdash; saved the team from maintaining a second inference stack.</div>
+  </section>
+</div>
+
+<!-- ===== EMBODYX &gt; PHARMACY / VISION ===== -->
+<div class="view" id="emb-pharmacy">
+  <section class="page">
+    <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
+    <div class="page-header">
+      <h1>Applied Vision &mdash; Reading Printed Labels</h1>
+      <div class="meta">Robot + self-hosted vision-language model &middot; proof-of-concept</div>
+    </div>
+    <div class="tags">
+      <span class="tag teal">Qwen2.5-VL</span><span class="tag teal">llama.cpp</span><span class="tag teal">vLLM</span>
+      <span class="tag teal">OpenCV</span><span class="tag">Computer Vision</span><span class="tag">Threading</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">A proof-of-concept application: the robot presents an object to a camera, a self-hosted vision-language model reads the printed text (an expiry date), and simple logic sorts good vs. expired items.</p>
+
+    <h2 class="section-title">What I built</h2>
+    <ul class="bullets">
+      <li>Served a <b>Qwen2.5-VL</b> vision-language model two ways &mdash; a quantized build on the edge device and a full build on a cloud GPU.</li>
+      <li>Split responsibilities so the model only reads the raw text while Python does the parsing and date comparison, then layered a real <b>anti-hallucination defense</b> (image-sharpness gating, read confirmation/debounce, sanity windows) after analyzing live failure cases.</li>
+      <li>Ran the slow vision-model call in a background thread so it never stalled the robot&rsquo;s control loop, and fixed a fixed-focus camera problem by selecting the right camera hardware.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Reliable reads when the label is sharp and facing the camera; deliberately fail-safe (any doubt is treated as &ldquo;expired&rdquo;).</li>
+      <li>An explicit proof-of-concept exploring how a general vision-language model can add perception to a manipulation task &mdash; not a production or medical-grade system.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== EMBODYX &gt; HUMANOIDS ===== -->
+<div class="view" id="emb-humanoids">
+  <section class="page">
+    <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
+    <div class="page-header">
+      <h1>Humanoid Robot Deployment</h1>
+      <div class="meta">&pi;0.5 on humanoid robots &middot; done remotely from the US while the robots ran overseas</div>
+    </div>
+    <div class="tags">
+      <span class="tag teal">AgiBot G1 / G2</span><span class="tag teal">&pi;0.5</span><span class="tag teal">PyTorch</span>
+      <span class="tag">Remote SSH</span><span class="tag">Root-cause debugging</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">Beyond the dual-arm robot, I helped bring VLA policies to humanoid robots &mdash; and did it entirely remotely, writing and debugging deployment code from the US while the robots physically ran overseas.</p>
+
+    <h2 class="section-title">What I did</h2>
+    <ul class="bullets">
+      <li>Trained and configured a &pi;0.5 policy for a humanoid and wrote the robot-inspection and deployment-support scripts.</li>
+      <li>Because I couldn&rsquo;t touch the hardware, I root-caused control problems (arm engagement, reactive-IK behavior) from recorded runs and careful reasoning about timing and staleness, then <b>delivered the fix together with the on-site team</b>.</li>
+      <li>For a second humanoid, I produced a read-only diagnostic guide from 16 recorded runs without ever moving the robot.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Arm engagement solved and verified on the robot; the second robot&rsquo;s issues diagnosed and handed off with a fix guide.</li>
+      <li>Demonstrated that a policy pipeline built for one robot could be carried across to a very different embodiment &mdash; under real remote-work constraints.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== EMBODYX &gt; WEB PLATFORM ===== -->
+<div class="view" id="emb-platform">
+  <section class="page">
+    <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
+    <div class="page-header">
+      <h1>Robots into a Production Web Platform</h1>
+      <div class="meta">Full-stack integration &middot; robot-side agent, ROS 2 bridge, portal features</div>
+    </div>
+    <div class="tags">
+      <span class="tag teal">Django / DRF</span><span class="tag teal">React / TypeScript</span><span class="tag teal">Python asyncio</span>
+      <span class="tag">Channels</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">ROS 2</span><span class="tag">Vite</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">EmbodyX&rsquo;s product includes an internal web platform that runs the whole robot-data lifecycle (record &rarr; clean &rarr; convert &rarr; fine-tune). I brought the dual-arm robot into it as a first-class citizen and worked across the full stack.</p>
+
+    <h2 class="section-title">What I built</h2>
+    <ul class="bullets">
+      <li>A <b>robot-side agent</b> (Python asyncio) connecting the physical robot to the platform &mdash; with a custom line-protocol, durable state, and dead-man safety switches &mdash; plus a ROS 2 service bridge.</li>
+      <li>End-to-end portal features: a watch-only &ldquo;spectate&rdquo; viewer, conditional workflow branching on the robot&rsquo;s live signals, and a model-deploy control.</li>
+      <li>Backend and frontend work across a Django + DRF + Channels + PostgreSQL + Redis backend and a React + Vite + TypeScript frontend &mdash; all test-driven &mdash; plus a cross-cutting bug-hunt that fixed several production issues.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>The robot&rsquo;s data-conversion path was merged into the platform&rsquo;s main branch; the broader integration shipped on feature branches.</li>
+      <li>Honest scope: I <b>extended a large, existing team platform</b> rather than building it from scratch &mdash; bringing one new robot fully into it, from the robot agent to the browser UI.</li>
+    </ul>
+  </section>
+</div>
+
+
+<!-- =================================================================== -->
+<!-- ACADEMIC / PERSONAL PROJECT DETAILS                                 -->
+<!-- =================================================================== -->
+
+<!-- ===== ALOHA ===== -->
+<div class="view" id="aloha">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>Sim-to-Real VLA Pipeline for Mobile ALOHA</h1>
+      <div class="meta">
+        Role: Simulation Team Member and Environment Developer<br>
+        Advanced Computation and Artificial Intelligence (ACAI) Lab, Dr. Shengfeng Yang<br>
+        January 2026 &ndash; Present
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag teal">Python</span><span class="tag teal">MuJoCo</span><span class="tag teal">dm_control</span><span class="tag teal">LeRobot</span>
+      <span class="tag">Jacobian-based IK</span><span class="tag">VLA Models</span><span class="tag">Domain Randomization</span><span class="tag">NSF ACCESS HPC</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">Training Vision-Language-Action (VLA) foundation models for manipulation requires large amounts of demonstration data, and collecting it physically is slow and expensive. This project builds a sim-to-real pipeline on the MuJoCo physics engine that generates thousands of diverse manipulation demonstrations for the 17-DOF Mobile ALOHA platform, providing multi-camera visual data and full-joint effort feedback.</p>
+
+    <div class="img-grid cols-2">
+      <div class="img-wrap">
+        <img src="Figure 1.png" alt="High-fidelity MuJoCo simulation of the Mobile ALOHA platform">
+        <p class="img-caption">Figure 1: High-fidelity MuJoCo simulation of the 17-DOF Mobile ALOHA platform.</p>
+      </div>
+      <div class="img-wrap">
+        <img src="Figure 2.png" alt="Left-arm camera visual observation data for VLA model training">
+        <p class="img-caption">Figure 2: Left-arm camera visual observation data generated for VLA model training.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">My contributions</h2>
+    <ul class="bullets">
+      <li><b>Kinematics and policy development:</b> engineered four scripted policies for bimanual tasks including tube-picking and mid-air handovers, using a Jacobian-based damped-least-squares IK solver.</li>
+      <li><b>Advanced manipulation features:</b> tube-position feedback to compensate for pendulum swing, grasp verification, and descent collision detection.</li>
+      <li><b>Domain randomization:</b> a procedural system using dm_control to vary distractor objects, positions, and conditions so the model generalizes rather than memorizes a static scene.</li>
+      <li><b>Data pipeline and quality control:</b> a dense episode-scoring system (Perfect &rarr; Catastrophic) that filters runs before export to the LeRobot format for training.</li>
+    </ul>
+
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <img src="Figure 3.png" alt="Procedurally generated distractor objects for domain randomization">
+        <p class="img-caption">Figure 3: Procedurally generated distractor objects added to the workspace for domain randomization.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Generates standardized datasets (joint states, velocities, efforts, and action commands) as structured training data for VLA fine-tuning.</li>
+      <li>Pipeline output is used to fine-tune pre-trained VLA models on NSF ACCESS HPC resources, reducing dependence on manual human teleoperation.</li>
+      <li>Fine-tuned VLA models and LLMs to automate bookshelf-organization tasks on the real Mobile ALOHA platform.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== BLIND HOCKEY ===== -->
+<div class="view" id="hockey">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>EPICS MOBI: USA Blind Hockey Prototype</h1>
+      <div class="meta">
+        Role: Design Lead and Electrical Team Member<br>
+        Engineering Projects in Community Service (EPICS), Mobility (MOBI), Purdue University<br>
+        August 2024 &ndash; May 2025
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag teal">Fusion 360</span><span class="tag teal">KiCad</span><span class="tag teal">LTspice</span>
+      <span class="tag">Polyurethane</span><span class="tag">3D Printing</span><span class="tag">PCB Design</span><span class="tag">Structural Analysis</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <p class="body-text">Developed with USA Blind Hockey through Purdue&rsquo;s EPICS Mobility program. Current blind-hockey pucks use metal ball bearings for sound: they are heavy, injure players, and break after a single game. The goal was a reusable, safer puck that produces consistent sound from electronics rather than bearings while surviving competitive play.</p>
+
+    <div class="img-grid cols-2">
+      <div class="img-wrap">
+        <img src="Figure 4.png" alt="Early CAD iteration of the snap-fit puck design">
+        <p class="img-caption">Figure 4: Early CAD iteration of the snap-fit design; the team later moved to a threaded closure for durability.</p>
+      </div>
+      <div class="img-wrap">
+        <img src="Figure 5.png" alt="Physical 3D-printed Polyurethane prototype">
+        <p class="img-caption">Figure 5: The 3D-printed Polyurethane prototype, with the internal cavity for the electronic sound components.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">My contributions</h2>
+    <ul class="bullets">
+      <li>Directed a five-member team as Design Lead across the electrical and mechanical workstreams.</li>
+      <li><b>Electrical design:</b> the puck&rsquo;s internal electronics in KiCad (PCB) and LTspice (circuit simulation), engineered to survive severe impact without damage.</li>
+      <li><b>Mechanical design:</b> Fusion 360 structural analysis to find weak points; iterated from a snap-fit to a threaded/screwed closure for durability and easy battery replacement.</li>
+      <li><b>Geometry &amp; materials:</b> redesigned sharp angles into filleted edges to distribute impact, and selected Polyurethane over PETG for impact resistance and low-temperature performance.</li>
+      <li>Ran real-user testing with a hockey player to validate durability, sound consistency, and waterproofing.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>The final Polyurethane prototype withstood <b>500 N</b> of drop-test force while staying waterproof with consistent sound output.</li>
+      <li>Delivered a working proof-of-concept for a safer, reusable, multi-game puck.</li>
+    </ul>
+
+    <div class="result-highlight">Final prototype validated: 500 N impact resistance, consistent sound output, waterproof, tested with a real athlete.</div>
+  </section>
+</div>
+
+<!-- ===== DIGITAL TWIN ===== -->
+<div class="view" id="piston">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>3DEXPERIENCE Digital Twin: Dual-Piston Mechanism</h1>
+      <div class="meta">
+        Purdue University Milestone Course, Dassault Syst&egrave;mes<br>
+        Tools: CATIA, 3DEXPERIENCE (Part Design, Assembly Design, Creative Experience), Apple Vision Pro
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag teal">CATIA</span><span class="tag teal">3DEXPERIENCE</span><span class="tag">Apple Vision Pro</span>
+      <span class="tag">Assembly Design</span><span class="tag">Kinematics</span><span class="tag">AR/VR</span><span class="tag">Digital Twin</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <ul class="bullets">
+      <li>Designed a functional mechanical assembly from the ground up and translated it into an interactive digital twin for Augmented Reality visualization.</li>
+      <li>Using Dassault Syst&egrave;mes 3DEXPERIENCE, modeled a complete dual-piston mechanism and prepared it for immersive simulation on Apple Vision Pro.</li>
+      <li>Components: a hand-crank wheel, a two-gear transmission, a main crankshaft, connecting rods, two piston heads, and a solid cylinder block.</li>
+    </ul>
+
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <img src="Figure 6.png" alt="Fully constrained dual-piston assembly in CATIA">
+        <p class="img-caption">Figure 6: The fully constrained dual-piston assembly, featuring the hand-crank input, gear train, and cylinder block.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">My contributions</h2>
+    <ul class="bullets">
+      <li><b>Component modeling</b> of every part using the Part Design app within 3DEXPERIENCE.</li>
+      <li><b>Assembly and motion:</b> revolute joints for the gear train and cylindrical constraints for the pistons, producing realistic kinematic motion.</li>
+      <li><b>AR integration:</b> used Creative Experience to deploy the assembly to Apple Vision Pro, letting users view the digital twin in 3D and analyze internal motion in real time.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Demonstrated the full digital-twin lifecycle: from CAD modeling and kinematic assembly to immersive AR visualization.</li>
+      <li>Applications include risk-free operator training, synthetic kinematic data generation, and pre-manufacturing design validation in mixed reality.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== LITTLE BRAZER ===== -->
+<div class="view" id="engine">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>Little Brazer Engine Assembly</h1>
+      <div class="meta">
+        Purdue University, MFET 164<br>
+        Tools: Siemens NX, Teamcenter (PLM), Bottom-Up Assembly Modeling
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag teal">Siemens NX</span><span class="tag teal">Teamcenter</span><span class="tag">PLM</span>
+      <span class="tag">Bottom-Up Assembly</span><span class="tag">Geometric Constraints</span><span class="tag">Version Control</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <ul class="bullets">
+      <li>Designed and assembled a functional Little Brazer engine model in Siemens NX and Teamcenter, following industry-standard CAD and PLM workflows.</li>
+      <li>Components include the engine body, cooling cylinder, crankshaft, cam, connecting rod, and wrist-pin brackets, all modeled from scratch.</li>
+    </ul>
+
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <img src="Figure 7.png" alt="Little Brazer Engine mid-assembly in Siemens NX">
+        <p class="img-caption">Figure 7: The Little Brazer Engine mid-assembly in Siemens NX, showing the geometric constraints for correct kinematic motion.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">My contributions</h2>
+    <ul class="bullets">
+      <li><b>Part design</b> of every component from scratch in Siemens NX.</li>
+      <li><b>Assembly and constraints:</b> a bottom-up assembly with concentric, distance, and touch constraints so the crankshaft and piston rod articulate without interference.</li>
+      <li><b>Data management:</b> Teamcenter PLM for CAD files, version control, and sub-assembly integrity, mirroring industry practice.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Produced a fully constrained, kinematically valid engine assembly &mdash; designing for manufacturability and validating kinematics within a PLM environment before physical production.</li>
+    </ul>
+  </section>
+</div>
+
+<!-- ===== NOSTRADAMUS ===== -->
+<div class="view" id="hurricane">
+  <section class="page">
+    <a class="back-link" href="#projects">&larr; All projects</a>
+    <div class="page-header">
+      <h1>The Nostradamus Project: Global Hurricane Predictor</h1>
+      <div class="meta">
+        Role: Creator and Developer &middot; September &ndash; December 2024 &middot;
+        <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal); text-decoration:none;">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="tags">
+      <span class="tag teal">Python</span><span class="tag teal">pandas</span><span class="tag teal">Folium</span><span class="tag teal">OpenStreetMap API</span>
+      <span class="tag">IBTrACS Dataset</span><span class="tag">Geospatial Mapping</span><span class="tag">Vectorization</span>
+    </div>
+
+    <h2 class="section-title">Overview</h2>
+    <ul class="bullets">
+      <li>A Python tool that processes the complete IBTrACS v04r01 dataset from NOAA &mdash; over <b>3 million</b> cyclone track records from all ocean basins, 1842 to present (~310&nbsp;MB).</li>
+      <li>Given any city and month, it computes the historical probability of a hurricane passing within a 5-degree radius and classifies the risk from Very Low to Extreme.</li>
+      <li>Built in two iterations: a procedural version, then a refactor using vectorized pandas for much better performance.</li>
+    </ul>
+
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <img src="Figure 8.png" alt="Interactive Folium heatmap of global hurricane frequency">
+        <p class="img-caption">Figure 8: An interactive Folium heatmap of global hurricane frequency in October, with a personalized risk marker placed in Miami, Florida.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">My contributions</h2>
+    <ul class="bullets">
+      <li><b>Geocoding module</b> (location.py) using the OpenStreetMap Nominatim API to turn any city name into coordinates via HTTP requests and JSON parsing.</li>
+      <li><b>Probability algorithm</b> using pandas boolean masking to filter by month and a &plusmn;5&deg; bounding box, counting unique Storm IDs to find distinct hurricanes.</li>
+      <li><b>Vectorized refactor</b> replacing loop-based counting with pandas operations (.nunique()) for significantly faster filtering.</li>
+      <li><b>Geospatial visualization</b> with Folium and Branca &mdash; an interactive global heatmap with a color-scaled legend and a risk-classification tooltip.</li>
+      <li>Input validation and error handling for CSV loading and geocoding failures.</li>
+    </ul>
+
+    <h2 class="section-title">Results</h2>
+    <ul class="bullets">
+      <li>Accurately processes 3M+ track records to output both a terminal risk classification and a navigable interactive HTML heatmap for any global location.</li>
+      <li>The refactored version showed measurable performance gains over the original by replacing row-by-row iteration with vectorized pandas filtering.</li>
+      <li>Full source and documentation are public on GitHub at <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal);">Fabricio-Giusti/Nostradamus-Project</a>.</li>
+    </ul>
+  </section>
+</div>
 
 </main>
 </div>
 
 <script>
-  const sections = document.querySelectorAll('.page');
-  const navLinks = document.querySelectorAll('.sidebar nav a');
+  (function () {
+    document.body.classList.add('js');
 
-  window.addEventListener('scr
+    var routes = {
+      '':                  ['landing', 'profile'],
+      'profile':           ['landing', 'profile'],
+      'projects':          ['landing', 'projects'],
+      'skills':            ['landing', 'skills'],
+      'awards':            ['landing', 'awards'],
+      'embodyx':           ['embodyx', null],
+      'embodyx/pipeline':  ['emb-pipeline', null],
+      'embodyx/deploy':    ['emb-deploy', null],
+      'embodyx/pharmacy':  ['emb-pharmacy', null],
+      'embodyx/humanoids': ['emb-humanoids', null],
+      'embodyx/platform':  ['emb-platform', null],
+      'p/aloha':           ['aloha', null],
+      'p/hockey':          ['hockey', null],
+      'p/piston':          ['piston', null],
+      'p/engine':          ['engine', null],
+      'p/hurricane':       ['hurricane', null]
+    };
+
+    var views = document.querySelectorAll('.view');
+    var navLinks = document.querySelectorAll('.sidebar nav a');
+
+    function render() {
+      var key = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+      var r = routes[key] || routes[''];
+      var i;
+      for (i = 0; i < views.length; i++) views[i].classList.remove('active');
+      var view = document.getElementById(r[0]);
+      if (view) view.classList.add('active');
+
+      for (i = 0; i < navLinks.length; i++) {
+        var dr = navLinks[i].getAttribute('data-route') || '';
+        var on = (dr === key) || (dr !== '' && dr !== 'projects' && key.indexOf(dr + '/') === 0);
+        navLinks[i].classList.toggle('active', on);
+      }
+
+      window.scrollTo(0, 0);
+      if (r[0] === 'landing' && r[1] && r[1] !== 'profile') {
+        var target = document.getElementById(r[1]);
+        if (target) target.scrollIntoView({ block: 'start' });
+      }
+    }
+
+    window.addEventListener('hashchange', render);
+    render();
+
+    // ---- demo video gallery ----
+    var thumbs = document.querySelectorAll('.demo-thumb');
+    var vid = document.getElementById('demoVideo');
+    var cap = document.getElementById('demoCaption');
+    if (vid && thumbs.length) {
+      for (var t = 0; t < thumbs.length; t++) {
+        thumbs[t].addEventListener('click', function () {
+          for (var k = 0; k < thumbs.length; k++) thumbs[k].classList.remove('active');
+          this.classList.add('active');
+          vid.setAttribute('poster', this.getAttribute('data-poster'));
+          vid.innerHTML = '<source src="' + this.getAttribute('data-src') + '" type="video/mp4">';
+          cap.innerHTML = this.getAttribute('data-cap');
+          vid.load();
+          var p = vid.play();
+          if (p && p.catch) p.catch(function () {});
+        });
+      }
+    }
+  })();
+</script>
+</body>
+</html>
