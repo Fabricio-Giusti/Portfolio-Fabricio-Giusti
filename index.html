@@ -473,6 +473,18 @@
   .demo-thumb.active { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal) inset; }
   .demo-thumb.active span { color: var(--teal); font-weight: 600; }
 
+  .demo-placeholder {
+    aspect-ratio: 16 / 9;
+    max-width: 560px;
+    margin: 0.4rem auto 0;
+    border: 2px dashed var(--border);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 1rem;
+    color: var(--muted); font-size: 0.85rem; font-style: italic;
+    background: var(--light);
+  }
+
   .pillars {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -796,8 +808,26 @@
       </div>
     </div>
 
+    <div class="img-grid cols-1">
+      <div class="img-wrap">
+        <img src="media/ur3_cell.jpg" alt="The dual-UR3 robot cell I built">
+        <p class="img-caption">The dual-UR3 cell I built and wired &mdash; two Universal Robots UR3 arms with DH adaptive grippers, an Intel RealSense head camera, and a Meta Quest headset for VR teleoperation.</p>
+      </div>
+    </div>
+
     <p class="body-text lead">As a robotics engineer at EmbodyX I owned the complete imitation-learning lifecycle for a dual-arm robot &mdash; teleoperated data collection, VLA model fine-tuning, and autonomous on-robot deployment. Around that core, I worked on edge-inference optimization, an applied computer-vision system, humanoid robots, and the company&rsquo;s full-stack web tooling.</p>
     <p class="body-text">I built the robot cell itself as well as the software &mdash; physically assembling and wiring the dual-arm workstation, mounting the cameras, running the cabling, and soldering custom leads &mdash; so I owned the system end to end, from the hardware bring-up to the trained policy. The autonomous behaviours I trained and deployed were used in the company&rsquo;s live robot demonstrations.</p>
+
+    <div class="img-grid cols-2">
+      <div class="img-wrap">
+        <img src="media/ur3_gripper.jpg" alt="Close-up of a UR3 arm and adaptive gripper">
+        <p class="img-caption">Close-up of a UR3 arm and its DH adaptive gripper &mdash; part of the cell I assembled and wired.</p>
+      </div>
+      <div class="img-wrap">
+        <img src="media/fabricio_robots.jpg" alt="Fabricio with the lab's robot platforms">
+        <p class="img-caption">The platforms I worked across &mdash; the dual-UR3 cell, humanoid robots, and a quadruped.</p>
+      </div>
+    </div>
 
     <ul class="pillars">
       <li><b>VLA deployment &amp; edge optimization</b> &mdash; running &pi;0.5 policies fast enough on real and edge hardware.</li>
@@ -807,7 +837,8 @@
     </ul>
 
     <h2 class="section-title">Autonomous demonstrations</h2>
-    <p class="body-text">Each clip is a trained &pi;0.5 policy running autonomously on the dual-arm robot &mdash; captioned with the exact instruction the model was given. Use the thumbnails to switch tasks.</p>
+    <div class="demo-placeholder">Highlight reel &mdash; third-person, multiple angles &middot; coming soon</div>
+    <p class="body-text" style="margin-top:1.1rem;">Below is every task from the robot&rsquo;s head camera &mdash; each a trained &pi;0.5 policy running autonomously, captioned with the exact instruction the model was given. Click a thumbnail to switch tasks.</p>
     <div class="video-gallery">
       <div class="demo-stage">
         <video id="demoVideo" controls autoplay muted loop playsinline poster="media/ram_insert.jpg">
@@ -819,14 +850,29 @@
         <button class="demo-thumb active" data-src="media/ram_insert.mp4" data-poster="media/ram_insert.jpg" data-cap="&ldquo;insert the RAM on the computer&rdquo;">
           <img src="media/ram_insert.jpg" alt=""><span>RAM insert</span>
         </button>
-        <button class="demo-thumb" data-src="media/pack.mp4" data-poster="media/pack.jpg" data-cap="&ldquo;pack the manuals, the VR headset, and the controllers into the box&rdquo;">
-          <img src="media/pack.jpg" alt=""><span>Packing</span>
+        <button class="demo-thumb" data-src="media/remove_ram.mp4" data-poster="media/remove_ram.jpg" data-cap="&ldquo;remove the RAM from the computer&rdquo;">
+          <img src="media/remove_ram.jpg" alt=""><span>Remove RAM</span>
+        </button>
+        <button class="demo-thumb" data-src="media/ethernet.mp4" data-poster="media/ethernet.jpg" data-cap="&ldquo;insert the ethernet cable on the slot&rdquo;">
+          <img src="media/ethernet.jpg" alt=""><span>Cable insert</span>
         </button>
         <button class="demo-thumb" data-src="media/scan.mp4" data-poster="media/scan.jpg" data-cap="&ldquo;scan barcode&rdquo;">
           <img src="media/scan.jpg" alt=""><span>Scan</span>
         </button>
-        <button class="demo-thumb" data-src="media/ethernet.mp4" data-poster="media/ethernet.jpg" data-cap="&ldquo;insert the ethernet cable on the slot&rdquo;">
-          <img src="media/ethernet.jpg" alt=""><span>Cable insert</span>
+        <button class="demo-thumb" data-src="media/pack.mp4" data-poster="media/pack.jpg" data-cap="&ldquo;pack the manuals, the VR headset, and the controllers into the box&rdquo;">
+          <img src="media/pack.jpg" alt=""><span>Packing</span>
+        </button>
+        <button class="demo-thumb" data-src="media/stacking.mp4" data-poster="media/stacking.jpg" data-cap="&ldquo;stack the cubes by color: green on black, then red on green&rdquo;">
+          <img src="media/stacking.jpg" alt=""><span>Stacking</span>
+        </button>
+        <button class="demo-thumb" data-src="media/blue_basket.mp4" data-poster="media/blue_basket.jpg" data-cap="&ldquo;put the medicine bottle and the measuring tape into the blue basket&rdquo;">
+          <img src="media/blue_basket.jpg" alt=""><span>Blue basket</span>
+        </button>
+        <button class="demo-thumb" data-src="media/mug.mp4" data-poster="media/mug.jpg" data-cap="&ldquo;hang the mug on the mug holder&rdquo;">
+          <img src="media/mug.jpg" alt=""><span>Mug</span>
+        </button>
+        <button class="demo-thumb" data-src="media/drawer.mp4" data-poster="media/drawer.jpg" data-cap="&ldquo;open the drawer, put the white box inside, and close it&rdquo;">
+          <img src="media/drawer.jpg" alt=""><span>Drawer</span>
         </button>
         <button class="demo-thumb" data-src="media/pharmacy.mp4" data-poster="media/pharmacy.jpg" data-cap="&ldquo;place the medicine on the good / bad container&rdquo;">
           <img src="media/pharmacy.jpg" alt=""><span>Sort medicine</span>
