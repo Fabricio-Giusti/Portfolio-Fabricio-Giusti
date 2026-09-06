@@ -429,6 +429,9 @@
   .proj-card.featured h3 { font-size: 1.32rem; }
   .proj-card.featured .card-body { padding: 1.5rem 1.7rem; }
 
+  .pipeline-thumb { background: var(--light); padding: 10px; }
+  .pipeline-thumb svg { width: 100%; height: 100%; display: block; }
+
   /* ---------- demo video gallery ---------- */
   .video-gallery { margin: 1.2rem 0 0.6rem; }
   .demo-stage {
@@ -570,7 +573,7 @@
   <div class="nav-section-label">Overview</div>
   <nav><a href="#profile" data-route="profile">Profile</a></nav>
   <div class="nav-section-label">Experience</div>
-  <nav><a href="#embodyx" data-route="embodyx">EmbodyX &mdash; Robotics Intern</a></nav>
+  <nav><a href="#embodyx" data-route="embodyx">EmbodyX, Robotics Intern</a></nav>
   <div class="nav-section-label">Projects</div>
   <nav>
     <a href="#projects" data-route="projects">All projects</a>
@@ -611,8 +614,8 @@
       <div class="profile-info">
         <h2>Fabricio Giusti Oliveira Monteiro</h2>
         <div class="title">Mechanical Engineering, Purdue University &middot; Robotics &amp; Embodied AI</div>
-        <p>I am a Mechanical Engineering student at Purdue University focused on robotics, automation, and bringing machine learning into physical systems. My work spans the full stack of a robot &mdash; from CAD and hands-on hardware bring-up to data pipelines, model training, and autonomous deployment.</p>
-        <p>Most recently I was a Robotics Engineer Intern at EmbodyX, where I owned the imitation-learning pipeline for a dual-arm robot end to end &mdash; teleoperation, data collection, Vision-Language-Action model fine-tuning, and on-robot deployment. I am also an Undergraduate Research Assistant at Purdue&rsquo;s ACAI Lab, and I co-founded the Boiler Soccer Robot Association to compete in the RoboCup Humanoid League.</p>
+        <p>I am a Mechanical Engineering student at Purdue University focused on robotics, automation, and bringing machine learning into physical systems. My work spans the full stack of a robot, from CAD and hands on hardware bring up to data pipelines, model training, and autonomous deployment.</p>
+        <p>Most recently I was a Robotics Engineer Intern at EmbodyX, where I owned the imitation learning pipeline for a dual arm robot: teleoperation, data collection, Vision Language Action model fine tuning, and deployment on the real robot. I am also an Undergraduate Research Assistant at Purdue&rsquo;s ACAI Lab, and I co-founded the Boiler Soccer Robot Association to compete in the RoboCup Humanoid League.</p>
         <div class="profile-links">
           <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
           <a href="https://linkedin.com/in/fabricio-giusti" target="_blank">LinkedIn</a>
@@ -644,15 +647,15 @@
     <!-- Featured: EmbodyX internship -->
     <a class="proj-card featured" href="#embodyx">
       <div class="card-inner">
-        <div class="thumb"><img src="media/ram_insert.jpg" alt="Dual-arm robot performing an autonomous task"></div>
+        <div class="thumb"><img src="media/ur3_cell.jpg" alt="The dual-UR3 robot cell"></div>
         <div class="card-body">
           <span class="badge">Internship &middot; Summer 2026</span>
-          <h3>Robotics Engineer Intern &mdash; EmbodyX</h3>
-          <div class="card-meta">Autonomous Vision-Language-Action robots &middot; San Mateo, CA</div>
-          <p>Owned the full imitation-learning pipeline for a dual-arm robot &mdash; from VR teleoperation and data collection to <strong>&pi;0.5</strong> model fine-tuning and autonomous on-robot deployment &mdash; plus edge-inference optimization, an applied vision system, humanoid deployment, and full-stack web tooling.</p>
+          <h3>Robotics Engineer Intern, EmbodyX</h3>
+          <div class="card-meta">Autonomous Vision Language Action robots &middot; San Mateo, CA</div>
+          <p>I owned the full pipeline that turns a task into an autonomous behavior on a dual UR3 rig: VR teleoperation, data collection, <strong>&pi;0.5</strong> fine tuning, and deployment back onto the real robot. I also optimized inference on edge and cloud GPUs, built a computer vision system, deployed policies onto humanoids, and shipped features into the company&rsquo;s web platform.</p>
           <div class="tags">
             <span class="tag teal">ROS 2</span>
-            <span class="tag teal">&pi;0.5 / openpi</span>
+            <span class="tag teal">&pi;0 / &pi;0.5</span>
             <span class="tag teal">PyTorch / JAX</span>
             <span class="tag">NVIDIA Jetson</span>
             <span class="tag">Computer Vision</span>
@@ -668,7 +671,7 @@
         <div class="thumb"><img src="Figure 1.png" alt="MuJoCo simulation of Mobile ALOHA"></div>
         <div class="card-body">
           <h3>Sim-to-Real VLA Pipeline for Mobile ALOHA</h3>
-          <div class="card-meta">Research &middot; ACAI Lab, Purdue &middot; 2026&ndash;present</div>
+          <div class="card-meta">Research &middot; ACAI Lab, Purdue &middot; 2026 to present</div>
           <p>Built scripted bimanual policies and a domain-randomized MuJoCo pipeline that generates manipulation data to fine-tune Vision-Language-Action models.</p>
           <div class="tags"><span class="tag teal">MuJoCo</span><span class="tag teal">Python</span><span class="tag">VLA Models</span></div>
           <span class="open-link">Open project &rarr;</span>
@@ -690,8 +693,8 @@
         <div class="thumb"><img src="Figure 5.png" alt="3D-printed blind hockey puck prototype"></div>
         <div class="card-body">
           <h3>USA Blind Hockey Prototype</h3>
-          <div class="card-meta">EPICS MOBI &middot; Design Lead &middot; 2024&ndash;25</div>
-          <p>Led a five-person team designing a safer, electronic-sound hockey puck &mdash; PCB, structural analysis, and materials &mdash; validated to 500 N impact.</p>
+          <div class="card-meta">EPICS MOBI &middot; Design Lead &middot; 2024 to 2025</div>
+          <p>Led a five person team designing a safer, electronic sound hockey puck (PCB, structural analysis, and materials) validated to 500 N impact.</p>
           <div class="tags"><span class="tag teal">Fusion 360</span><span class="tag teal">KiCad</span><span class="tag">PCB Design</span></div>
           <span class="open-link">Open project &rarr;</span>
         </div>
@@ -763,6 +766,13 @@
       <li>
         <span class="year">2026</span>
         <div>
+          <span class="award-name">Howard L. Timms Endowment Fund</span>
+          <span class="award-org">Purdue University, School of Mechanical Engineering (2026/2027)</span>
+        </div>
+      </li>
+      <li>
+        <span class="year">2026</span>
+        <div>
           <span class="award-name">Outstanding Sophomore Award, Finalist</span>
           <span class="award-org">Purdue University</span>
         </div>
@@ -782,7 +792,7 @@
         </div>
       </li>
       <li>
-        <span class="year">2024&ndash;25</span>
+        <span class="year">2024/25</span>
         <div>
           <span class="award-name">Dean&rsquo;s List and Semester Honors Recognition</span>
           <span class="award-org">Purdue University, every semester since enrollment</span>
@@ -801,9 +811,9 @@
   <section class="page">
     <a class="back-link" href="#projects">&larr; All projects</a>
     <div class="page-header">
-      <h1>Robotics Engineer Intern &mdash; EmbodyX</h1>
+      <h1>Robotics Engineer Intern, EmbodyX</h1>
       <div class="meta">
-        EmbodyX &middot; San Mateo, CA &middot; May &ndash; August 2026<br>
+        EmbodyX &middot; San Mateo, CA &middot; May to August 2026<br>
         Embodied-AI startup building Vision-Language-Action (VLA) models and robot-data pipelines
       </div>
     </div>
@@ -811,34 +821,35 @@
     <div class="img-grid cols-1">
       <div class="img-wrap">
         <img src="media/ur3_cell.jpg" alt="The dual-UR3 robot cell I built">
-        <p class="img-caption">The dual-UR3 cell I built and wired &mdash; two Universal Robots UR3 arms with DH adaptive grippers, an Intel RealSense head camera, and a Meta Quest headset for VR teleoperation.</p>
+        <p class="img-caption">The dual UR3 cell I built and wired: two Universal Robots UR3 arms with DH adaptive grippers, an Intel RealSense head camera, and a Meta Quest headset for VR teleoperation.</p>
       </div>
     </div>
 
-    <p class="body-text lead">As a robotics engineer at EmbodyX I owned the complete imitation-learning lifecycle for a dual-arm robot &mdash; teleoperated data collection, VLA model fine-tuning, and autonomous on-robot deployment. Around that core, I worked on edge-inference optimization, an applied computer-vision system, humanoid robots, and the company&rsquo;s full-stack web tooling.</p>
-    <p class="body-text">I built the robot cell itself as well as the software &mdash; physically assembling and wiring the dual-arm workstation, mounting the cameras, running the cabling, and soldering custom leads &mdash; so I owned the system end to end, from the hardware bring-up to the trained policy. The autonomous behaviours I trained and deployed were used in the company&rsquo;s live robot demonstrations.</p>
+    <p class="body-text lead">EmbodyX builds Vision Language Action (VLA) models: foundation models that take in camera images and a language instruction and output robot motion. As a Robotics Engineer here I owned the full pipeline that turns a task into an autonomous behavior on a bimanual dual UR3 rig. I collected the demonstration data by VR teleoperation, fine tuned the policy, and deployed it back onto the real robot.</p>
+    <p class="body-text">I also went well beyond that core. I optimized model inference on edge and cloud GPUs, built a computer vision system, deployed policies onto humanoid robots, and shipped full stack features into the company&rsquo;s web platform. I built the robot cell itself too, not just the software: I assembled and wired the dual UR3 workstation, mounted the three cameras, ran the cabling, and soldered custom connectors, so I owned the system from the physical bring up to the trained policy that runs on it. The policies I trained were shown in the company&rsquo;s live robot demonstrations.</p>
+    <p class="body-text">Models I worked with: <strong>&pi;0</strong> and <strong>&pi;0.5</strong> (Physical Intelligence&rsquo;s openpi), <strong>OpenVLA-OFT</strong>, and a family of world action models (WAMs) that predict future video jointly with actions: <strong>LingBot-VA</strong>, <strong>ImageWAM</strong>, and <strong>Fast-WAM</strong>.</p>
 
     <div class="img-grid cols-2">
       <div class="img-wrap">
         <img src="media/ur3_gripper.jpg" alt="Close-up of a UR3 arm and adaptive gripper">
-        <p class="img-caption">Close-up of a UR3 arm and its DH adaptive gripper &mdash; part of the cell I assembled and wired.</p>
+        <p class="img-caption">A close up of a UR3 arm and its DH adaptive gripper, part of the cell I assembled and wired.</p>
       </div>
       <div class="img-wrap">
         <img src="media/fabricio_robots.jpg" alt="Fabricio with the lab's robot platforms">
-        <p class="img-caption">The platforms I worked across &mdash; the dual-UR3 cell, humanoid robots, and a quadruped.</p>
+        <p class="img-caption">The platforms I worked across: the dual UR3 cell, humanoid robots, and a quadruped.</p>
       </div>
     </div>
 
     <ul class="pillars">
-      <li><b>VLA deployment &amp; edge optimization</b> &mdash; running &pi;0.5 policies fast enough on real and edge hardware.</li>
-      <li><b>Data-pipeline engineering</b> &mdash; the teleoperate &rarr; record &rarr; convert &rarr; train data flow.</li>
-      <li><b>Applied vision / VLM</b> &mdash; reading printed text off objects to drive sorting.</li>
-      <li><b>Robotics &harr; web integration</b> &mdash; connecting real robots to a production web platform.</li>
+      <li><b>VLA deployment and edge optimization:</b> running the policies fast enough on real, cloud, and edge hardware.</li>
+      <li><b>Data pipeline engineering:</b> the teleoperate, record, convert, and train data flow.</li>
+      <li><b>Applied computer vision:</b> reading printed text off objects to drive sorting.</li>
+      <li><b>Robotics and web integration:</b> connecting real robots to a production web platform.</li>
     </ul>
 
-    <h2 class="section-title">Autonomous demonstrations</h2>
-    <div class="demo-placeholder">Highlight reel &mdash; third-person, multiple angles &middot; coming soon</div>
-    <p class="body-text" style="margin-top:1.1rem;">Below is every task from the robot&rsquo;s head camera &mdash; each a trained &pi;0.5 policy running autonomously, captioned with the exact instruction the model was given. Click a thumbnail to switch tasks.</p>
+    <h2 class="section-title">Tasks and training data</h2>
+    <div class="demo-placeholder">Autonomous demo reel: the trained policy running on its own, filmed from several angles. Coming soon.</div>
+    <p class="body-text" style="margin-top:1.1rem;">The clips below are the <strong>training data</strong>, not the autonomous runs. Each one is a recorded demonstration of a single task, shown from the robot&rsquo;s head camera, and the &pi;0.5 policies were trained on data like this. The caption is the exact language instruction for that task. Click a thumbnail to switch tasks.</p>
     <div class="video-gallery">
       <div class="demo-stage">
         <video id="demoVideo" controls autoplay muted loop playsinline poster="media/ram_insert.jpg">
@@ -884,12 +895,26 @@
     <div class="proj-grid">
       <a class="proj-card featured" href="#embodyx/pipeline">
         <div class="card-inner">
-          <div class="thumb"><img src="media/cameras_grid.jpg" alt="Three-camera view the policy sees"></div>
+          <div class="thumb pipeline-thumb">
+            <svg viewBox="0 0 300 296" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline: teleoperate, record, convert, train, deploy" preserveAspectRatio="xMidYMid meet">
+              <g font-family="Inter, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
+                <rect x="45" y="12" width="210" height="36" rx="6" fill="#264653"/><text x="150" y="35" fill="#ffffff">Teleoperate</text>
+                <rect x="45" y="70" width="210" height="36" rx="6" fill="#264653"/><text x="150" y="93" fill="#ffffff">Record</text>
+                <rect x="45" y="128" width="210" height="36" rx="6" fill="#264653"/><text x="150" y="151" fill="#ffffff">Convert</text>
+                <rect x="45" y="186" width="210" height="36" rx="6" fill="#264653"/><text x="150" y="209" fill="#ffffff">Train</text>
+                <rect x="45" y="244" width="210" height="36" rx="6" fill="#e76f51"/><text x="150" y="267" fill="#ffffff">Deploy</text>
+                <g fill="#2a9d8f">
+                  <polygon points="143,52 157,52 150,64"/><polygon points="143,110 157,110 150,122"/>
+                  <polygon points="143,168 157,168 150,180"/><polygon points="143,226 157,226 150,238"/>
+                </g>
+              </g>
+            </svg>
+          </div>
           <div class="card-body">
             <span class="badge">Core focus</span>
-            <h3>End-to-End Imitation-Learning Pipeline</h3>
-            <div class="card-meta">Dual-arm robot &middot; teleoperate &rarr; record &rarr; convert &rarr; train &rarr; deploy</div>
-            <p>The heart of my internship: the full data-to-policy pipeline &mdash; VR teleoperation, a multi-camera episode recorder, dataset conversion and curation, and <strong>&pi;0.5</strong> fine-tuning on remote GPU clusters. 500+ demonstrations across ~34 curated datasets.</p>
+            <h3>End to End Imitation Learning Pipeline</h3>
+            <div class="card-meta">Dual UR3 robot &middot; teleoperate &rarr; record &rarr; convert &rarr; train &rarr; deploy</div>
+            <p>The core of my internship. I built every stage that turns a human demonstration into an autonomous policy: VR teleoperation, a multi camera recorder, dataset conversion and curation, and <strong>&pi;0.5</strong> fine tuning on remote GPU clusters. 500+ demonstrations across about 34 datasets.</p>
             <div class="tags">
               <span class="tag teal">ROS 2</span><span class="tag teal">Meta Quest</span>
               <span class="tag teal">&pi;0.5 / openpi</span><span class="tag">LeRobot</span><span class="tag">PyTorch / JAX</span>
@@ -901,20 +926,20 @@
 
       <a class="proj-card" href="#embodyx/deploy">
         <div class="card-body">
-          <h3>Real-Time Deployment &amp; Edge Optimization</h3>
-          <div class="card-meta">Serving &middot; latency &middot; on-device inference</div>
-          <p>Served trained policies to the real robot with low latency and ran them on-device on an NVIDIA Jetson Orin &mdash; async real-time chunking, a latency campaign, and a rigorous benchmark of a quantized C++ backend vs. PyTorch.</p>
-          <div class="tags"><span class="tag teal">Jetson Orin</span><span class="tag teal">WebSockets</span><span class="tag">Real-Time Chunking</span><span class="tag">CUDA</span></div>
+          <h3>Deployment and Edge Optimization</h3>
+          <div class="card-meta">Serving &middot; latency &middot; local and cloud inference</div>
+          <p>I served the policies to the real robot across five GPU targets, on the robot&rsquo;s own Jetson Orin, on a local RTX 5090, and on cloud A100 and A10 servers. I removed the pause between action chunks with asynchronous real time chunking and benchmarked a quantized C++ backend against PyTorch. I also deployed the world action models (LingBot-VA, ImageWAM, Fast-WAM) onto the same rig.</p>
+          <div class="tags"><span class="tag teal">Jetson Orin</span><span class="tag teal">A100 / A10</span><span class="tag teal">RTX 5090</span><span class="tag">WebSockets</span><span class="tag">CUDA</span></div>
           <span class="open-link">Open &rarr;</span>
         </div>
       </a>
 
       <a class="proj-card" href="#embodyx/pharmacy">
         <div class="card-body">
-          <h3>Applied Vision &mdash; Reading Labels</h3>
-          <div class="card-meta">Vision-language model + robot</div>
-          <p>A proof-of-concept where the robot presents an object and a self-hosted vision-language model (Qwen2.5-VL) reads a printed date to sort items, with a real anti-hallucination pipeline.</p>
-          <div class="tags"><span class="tag teal">Qwen2.5-VL</span><span class="tag teal">llama.cpp / vLLM</span><span class="tag">OpenCV</span></div>
+          <h3>Applied Computer Vision</h3>
+          <div class="card-meta">Vision language model + OpenCV + robot</div>
+          <p>The robot presents an object to a camera, a self hosted vision language model (Qwen2.5-VL) reads the printed date, and the item is sorted good or expired. I built the OpenCV image pipeline, the sharpness gating, the camera swap, and a real anti hallucination layer.</p>
+          <div class="tags"><span class="tag teal">Qwen2.5-VL</span><span class="tag teal">OpenCV</span><span class="tag">llama.cpp</span><span class="tag">vLLM</span></div>
           <span class="open-link">Open &rarr;</span>
         </div>
       </a>
@@ -922,9 +947,9 @@
       <a class="proj-card" href="#embodyx/humanoids">
         <div class="card-body">
           <h3>Humanoid Robot Deployment</h3>
-          <div class="card-meta">Remote &mdash; robots overseas</div>
-          <p>Trained and deployed &pi;0.5 policies on humanoid robots, working entirely remotely from the US &mdash; root-causing control issues from recorded runs and delivering fixes with the on-site team.</p>
-          <div class="tags"><span class="tag teal">AgiBot G1 / G2</span><span class="tag teal">&pi;0.5</span><span class="tag">Remote Debugging</span></div>
+          <div class="card-meta">Remote, robots overseas</div>
+          <p>I trained and deployed &pi;0.5 policies on two AgiBot humanoids (24 and 17 degrees of freedom), working entirely remotely from the US while the robots ran overseas. I root caused control problems from recorded runs and delivered the fixes with the on site team.</p>
+          <div class="tags"><span class="tag teal">AgiBot G1 / G2</span><span class="tag teal">&pi;0.5</span><span class="tag">Remote debugging</span></div>
           <span class="open-link">Open &rarr;</span>
         </div>
       </a>
@@ -932,8 +957,8 @@
       <a class="proj-card" href="#embodyx/platform">
         <div class="card-body">
           <h3>Robots into a Web Platform</h3>
-          <div class="card-meta">Full-stack &middot; Django + React</div>
-          <p>Brought the robot first-class into the company&rsquo;s internal robot-learning web platform: a robot-side agent, a ROS 2 bridge, and portal features, across a Django backend and a React frontend.</p>
+          <div class="card-meta">Full stack &middot; Django + React</div>
+          <p>I brought the dual UR3 into the company&rsquo;s internal robot learning web platform as a first class robot: a robot side agent, a ROS 2 bridge, and portal features, across a Django backend and a React frontend, all test driven.</p>
           <div class="tags"><span class="tag teal">Django / DRF</span><span class="tag teal">React / TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">ROS 2</span></div>
           <span class="open-link">Open &rarr;</span>
         </div>
@@ -948,8 +973,8 @@
   <section class="page">
     <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
     <div class="page-header">
-      <h1>End-to-End Imitation-Learning Pipeline</h1>
-      <div class="meta">Dual-arm (Universal Robots UR3) robot &middot; teleoperation &rarr; recording &rarr; conversion &rarr; &pi;0.5 training &rarr; deployment</div>
+      <h1>End to End Imitation Learning Pipeline</h1>
+      <div class="meta">Dual UR3 (Universal Robots) robot &middot; teleoperation &rarr; recording &rarr; conversion &rarr; &pi;0.5 training &rarr; deployment</div>
     </div>
     <div class="tags">
       <span class="tag teal">ROS 2</span><span class="tag teal">Meta Quest (VR)</span><span class="tag teal">&pi;0.5 / openpi</span>
@@ -958,30 +983,30 @@
     </div>
 
     <h2 class="section-title">Overview</h2>
-    <p class="body-text">This was the heart of my internship: the pipeline that turns human demonstrations into an autonomous robot policy, for a bimanual dual-arm robot. Four stages &mdash; teleoperate, record, convert, train &mdash; feed a fifth, deployment. I built the software for each, so a task idea could become a demonstrable, autonomous robot behaviour end to end.</p>
+    <p class="body-text">This was the core of my internship. It is the pipeline that turns human demonstrations into an autonomous policy for the bimanual dual UR3 robot. Four stages feed a fifth: I teleoperate the robot to collect demonstrations, record them, convert them into a training dataset, and fine tune the model, which then gets deployed. I built the software for every stage, so a task idea could become a working autonomous behavior on the real robot.</p>
 
     <div class="img-grid cols-1">
       <div class="img-wrap">
         <video controls muted loop playsinline poster="media/cameras_grid.jpg" style="width:100%;display:block;border-radius:3px;">
           <source src="media/cameras_grid.mp4" type="video/mp4">
         </video>
-        <p class="img-caption">What the policy actually sees &mdash; the head plus left/right wrist camera streams, each resized to 224&times;224 before inference.</p>
+        <p class="img-caption">The three camera streams the policy is trained and run on: the head camera plus the left and right wrist cameras, each resized to 224&times;224 before inference.</p>
       </div>
     </div>
 
     <h2 class="section-title">What I built</h2>
     <ul class="bullets">
-      <li><b>Teleoperation.</b> A VR system driving both arms and grippers in real time from a Meta Quest headset (over <span>ur_rtde</span> at 30&nbsp;Hz), with a safety model I designed: motion off by default, an explicit operator engage-gate, per-arm freeze, and a strict &ldquo;never let two controllers fight for one arm&rdquo; contract &mdash; covered by off-robot unit tests.</li>
-      <li><b>Recording.</b> A multi-camera episode recorder capturing time-synchronized joints, grippers, and three camera streams, with a self-correcting timing grid and a freshness gate that guarantees <b>zero duplicate frames</b> &mdash; clean training data at an honest, measured rate.</li>
-      <li><b>Data engineering.</b> Converters from raw HDF5 recordings into the LeRobot dataset format, plus the dataset library itself. I curated <b>~34 datasets</b> and fixed real data-quality problems: camera-freeze artifacts, inverted wrist cameras, mixed resolutions and frame-rates, and multi-task merges.</li>
-      <li><b>Training.</b> Fine-tuned &pi;0.5 (openpi) Vision-Language-Action models on remote H100 / B300 GPU clusters &mdash; writing the per-robot input/output transforms and data configs, running sharded (FSDP) training, and tracking experiments in Weights &amp; Biases.</li>
+      <li><b>Teleoperation.</b> A VR system that drives both arms and grippers in real time from a Meta Quest headset, over ur_rtde at 30&nbsp;Hz. I designed the safety model: motion is off by default, the operator explicitly engages each arm, either arm can freeze on its own grip trigger, and two motion controllers can never fight for the same arm. I covered the engage logic with off robot unit tests.</li>
+      <li><b>Recording.</b> A multi camera episode recorder that captures joints, grippers, and three synchronized camera streams. It paces on a self correcting timing grid and a freshness gate that guarantees <b>zero duplicate frames</b>, so the training data is clean and recorded at an honest, measured rate.</li>
+      <li><b>Data engineering.</b> Converters from raw HDF5 recordings into the LeRobot format, plus the dataset library itself. I curated <b>about 34 datasets</b> and fixed real data quality problems: camera freezes, inverted wrist cameras, mixed resolutions and frame rates, and multi task merges.</li>
+      <li><b>Training.</b> I fine tuned &pi;0 and &pi;0.5 (openpi) on remote H100 and B300 GPU clusters. I wrote the per robot input and output transforms and data configs, ran sharded (FSDP) training, and tracked every run in Weights &amp; Biases.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
       <li>Recorded <b>500+ demonstration episodes</b> and trained multiple task policies that run autonomously on the real robot.</li>
       <li>The datasets and the training recipe became a reusable baseline for the team.</li>
-      <li>The resulting autonomous behaviours were shown in the company&rsquo;s live robot demonstrations.</li>
+      <li>The resulting policies were shown in the company&rsquo;s live robot demonstrations.</li>
     </ul>
   </section>
 </div>
@@ -991,33 +1016,34 @@
   <section class="page">
     <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
     <div class="page-header">
-      <h1>Real-Time Deployment &amp; Edge Optimization</h1>
-      <div class="meta">Serving trained policies to the robot &middot; latency reduction &middot; on-device edge inference</div>
+      <h1>Deployment and Edge Optimization</h1>
+      <div class="meta">Serving trained policies to the robot &middot; latency reduction &middot; local and cloud inference</div>
     </div>
     <div class="tags">
-      <span class="tag teal">NVIDIA Jetson Orin</span><span class="tag teal">PyTorch</span><span class="tag teal">JAX</span>
-      <span class="tag teal">WebSockets</span><span class="tag">Real-Time Chunking</span><span class="tag">CUDA</span>
-      <span class="tag">ggml / GGUF</span><span class="tag">A/B benchmarking</span>
+      <span class="tag teal">NVIDIA Jetson Orin</span><span class="tag teal">A100 / A10</span><span class="tag teal">RTX 5090</span>
+      <span class="tag teal">PyTorch</span><span class="tag teal">JAX</span><span class="tag teal">WebSockets</span>
+      <span class="tag">Real time chunking</span><span class="tag">CUDA</span><span class="tag">ggml / GGUF</span><span class="tag">A/B benchmarking</span>
     </div>
 
     <h2 class="section-title">Overview</h2>
-    <p class="body-text">A trained policy still has to run on the real robot fast enough to be smooth. I built the serving stack and then optimized it &mdash; in the cloud, on a local box, and on-device at the edge.</p>
+    <p class="body-text">A trained policy has to run on the real robot fast enough to look smooth. I built the serving stack, then optimized it across cloud GPUs, a local box, and the robot&rsquo;s own edge computer.</p>
 
     <h2 class="section-title">What I built</h2>
     <ul class="bullets">
-      <li><b>Serving architecture.</b> A policy-server &harr; robot-client split over websockets: the GPU runs the model and streams action chunks; the robot client feeds observations and drives the arms.</li>
-      <li><b>Asynchronous real-time chunking.</b> A two-thread control loop that removes the per-chunk pause where the arm would otherwise freeze to &ldquo;think.&rdquo; I implemented the guided chunk-swapping method from the research literature and, in doing so, <b>found and fixed a subtle guidance sign error</b> that had been missed.</li>
-      <li><b>Latency campaign.</b> A per-stage profiler that pinned the real bottleneck (network jitter, not the model), plus a JPEG payload path that <b>roughly halved</b> end-to-end latency.</li>
-      <li><b>Five GPU targets.</b> Stood up serving on an edge Jetson Orin, a local desktop GPU, two cloud GPUs, and a university cluster &mdash; each with its own driver and GPU-architecture quirks to work around.</li>
-      <li><b>Edge study.</b> Profiled inference on the Jetson Orin (including finding a Python GIL-contention issue and tuning power modes) and benchmarked a quantized C++ backend against PyTorch with rigorous interleaved A/B tests.</li>
+      <li><b>Serving architecture.</b> A policy server and a robot client that talk over WebSockets. The GPU runs the model and streams action chunks, and the client feeds it observations and drives the arms.</li>
+      <li><b>Local and cloud inference on five GPU targets.</b> I stood up serving on the robot&rsquo;s own NVIDIA Jetson AGX Orin (PyTorch), a local RTX 5090 box that served the robot directly over the LAN with no SSH tunnel, a GCP A100, an Azure A10, and university H100 and B300 clusters. Each one had its own CUDA, driver, and GPU architecture to work around.</li>
+      <li><b>Asynchronous real time chunking.</b> A two thread control loop that removes the pause where the arm freezes to think between action chunks. I implemented the guided chunk swapping method from the research literature, and while doing so I <b>found and fixed a guidance sign error</b> that had been missed.</li>
+      <li><b>Latency work.</b> A per stage profiler that showed the real bottleneck was network jitter, not the model, plus a JPEG payload path that <b>cut end to end latency roughly in half</b>, from about 450&nbsp;ms to 250&nbsp;ms.</li>
+      <li><b>Edge study.</b> I profiled inference on the Orin, found a Python GIL contention issue, tuned the power modes, and benchmarked a quantized C++ (ggml) backend against PyTorch with interleaved A/B tests.</li>
+      <li><b>World action models.</b> Beyond &pi;0.5, I deployed a family of world action models onto the same UR3 rig. I wrote the deployment scaffold and the entire Fast-WAM track (server, client, config, and profiler), and reverse engineered the model&rsquo;s sync protocol from its server source.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
       <li>A smooth, deployable serving path used for the live demonstrations.</li>
-      <li>The C++ backend was <b>~1.9&times; faster in isolation</b>, but under real camera load the advantage nearly vanished &mdash; so I made the evidence-based call to keep the simpler PyTorch backend and avoid carrying dead complexity.</li>
+      <li>The C++ backend was <b>about 1.9&times; faster in isolation</b>, but under real camera load the gap nearly vanished, so I made the evidence based call to keep the simpler PyTorch backend and avoid maintaining a second inference stack.</li>
     </ul>
-    <div class="result-highlight">A well-argued negative result &mdash; measuring that an optimization <em>doesn&rsquo;t</em> pay off in the real setup &mdash; saved the team from maintaining a second inference stack.</div>
+    <div class="result-highlight">Measuring that an optimization does not pay off in the real setup was as useful as a speedup here. It saved the team from maintaining a second inference stack.</div>
   </section>
 </div>
 
@@ -1026,28 +1052,29 @@
   <section class="page">
     <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
     <div class="page-header">
-      <h1>Applied Vision &mdash; Reading Printed Labels</h1>
-      <div class="meta">Robot + self-hosted vision-language model &middot; proof-of-concept</div>
+      <h1>Applied Computer Vision</h1>
+      <div class="meta">Robot plus a self hosted vision language model &middot; reading printed labels &middot; proof of concept</div>
     </div>
     <div class="tags">
-      <span class="tag teal">Qwen2.5-VL</span><span class="tag teal">llama.cpp</span><span class="tag teal">vLLM</span>
-      <span class="tag teal">OpenCV</span><span class="tag">Computer Vision</span><span class="tag">Threading</span>
+      <span class="tag teal">Qwen2.5-VL</span><span class="tag teal">OpenCV</span><span class="tag teal">llama.cpp</span>
+      <span class="tag teal">vLLM</span><span class="tag">A100</span><span class="tag">Computer vision</span><span class="tag">Threading</span>
     </div>
 
     <h2 class="section-title">Overview</h2>
-    <p class="body-text">A proof-of-concept application: the robot presents an object to a camera, a self-hosted vision-language model reads the printed text (an expiry date), and simple logic sorts good vs. expired items.</p>
+    <p class="body-text">This is the computer vision side of my internship. The robot presents an object to a camera, a self hosted vision language model reads the printed text (an expiry date), and simple logic sorts the object as good or expired. The vision work is mine end to end: the camera pipeline, the image processing, and the reliability layer around the model.</p>
 
     <h2 class="section-title">What I built</h2>
     <ul class="bullets">
-      <li>Served a <b>Qwen2.5-VL</b> vision-language model two ways &mdash; a quantized build on the edge device and a full build on a cloud GPU.</li>
-      <li>Split responsibilities so the model only reads the raw text while Python does the parsing and date comparison, then layered a real <b>anti-hallucination defense</b> (image-sharpness gating, read confirmation/debounce, sanity windows) after analyzing live failure cases.</li>
-      <li>Ran the slow vision-model call in a background thread so it never stalled the robot&rsquo;s control loop, and fixed a fixed-focus camera problem by selecting the right camera hardware.</li>
+      <li><b>Model serving.</b> I ran a <b>Qwen2.5-VL</b> vision language model two ways: a quantized build on the edge device with llama.cpp, and a full build on a GCP A100 with vLLM.</li>
+      <li><b>Computer vision pipeline.</b> I built the OpenCV image path, a fixed region crop and a Laplacian sharpness gate that rejects blurry frames before they reach the model. I split the work so the model only reads the raw text while Python parses the date and compares it.</li>
+      <li><b>Reliability.</b> After analyzing live failures I added an anti hallucination layer: read confirmation, sanity windows on the year, and a burst that keeps the sharpest frame. I ran the slow model call on a background thread so it never stalled the robot&rsquo;s control loop.</li>
+      <li><b>Camera and optics.</b> I diagnosed a fixed focus camera that blurred at close range and swapped in an autofocus Arducam with a locked focus, which fixed the root cause of the bad reads.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
-      <li>Reliable reads when the label is sharp and facing the camera; deliberately fail-safe (any doubt is treated as &ldquo;expired&rdquo;).</li>
-      <li>An explicit proof-of-concept exploring how a general vision-language model can add perception to a manipulation task &mdash; not a production or medical-grade system.</li>
+      <li>Reliable reads when the label is sharp and facing the camera, and fail safe by design: any doubt is treated as expired.</li>
+      <li>A working proof of concept for adding perception to a manipulation task with a general vision language model. It is not a production or medical grade system.</li>
     </ul>
   </section>
 </div>
@@ -1058,27 +1085,27 @@
     <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
     <div class="page-header">
       <h1>Humanoid Robot Deployment</h1>
-      <div class="meta">&pi;0.5 on humanoid robots &middot; done remotely from the US while the robots ran overseas</div>
+      <div class="meta">&pi;0.5 on AgiBot G2 and G1 humanoids &middot; done remotely from the US while the robots ran overseas</div>
     </div>
     <div class="tags">
-      <span class="tag teal">AgiBot G1 / G2</span><span class="tag teal">&pi;0.5</span><span class="tag teal">PyTorch</span>
-      <span class="tag">Remote SSH</span><span class="tag">Root-cause debugging</span>
+      <span class="tag teal">AgiBot G2 (24 DOF)</span><span class="tag teal">AgiBot G1 (17 DOF)</span><span class="tag teal">&pi;0.5</span>
+      <span class="tag">PyTorch</span><span class="tag">Tailscale SSH</span><span class="tag">Root cause debugging</span>
     </div>
 
     <h2 class="section-title">Overview</h2>
-    <p class="body-text">Beyond the dual-arm robot, I helped bring VLA policies to humanoid robots &mdash; and did it entirely remotely, writing and debugging deployment code from the US while the robots physically ran overseas.</p>
+    <p class="body-text">Beyond the dual arm robot, I helped bring VLA policies to humanoid robots, and I did it entirely remotely. I wrote and debugged the deployment code from the US while the robots physically ran overseas, over SSH, without ever seeing or touching them.</p>
 
     <h2 class="section-title">What I did</h2>
     <ul class="bullets">
-      <li>Trained and configured a &pi;0.5 policy for a humanoid and wrote the robot-inspection and deployment-support scripts.</li>
-      <li>Because I couldn&rsquo;t touch the hardware, I root-caused control problems (arm engagement, reactive-IK behavior) from recorded runs and careful reasoning about timing and staleness, then <b>delivered the fix together with the on-site team</b>.</li>
-      <li>For a second humanoid, I produced a read-only diagnostic guide from 16 recorded runs without ever moving the robot.</li>
+      <li>Trained and configured a &pi;0.5 policy for the 24 degree of freedom AgiBot G2, and wrote the robot inspection and deployment support scripts.</li>
+      <li>Since I could not touch the hardware, I root caused the control problems (arm engagement, reactive inverse kinematics) from recorded runs and careful reasoning about timing and staleness, then <b>delivered the fix together with the on site team</b>.</li>
+      <li>For a second humanoid, the 17 degree of freedom AgiBot G1, I produced a read only diagnostic guide from 16 recorded runs without ever moving the robot.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
-      <li>Arm engagement solved and verified on the robot; the second robot&rsquo;s issues diagnosed and handed off with a fix guide.</li>
-      <li>Demonstrated that a policy pipeline built for one robot could be carried across to a very different embodiment &mdash; under real remote-work constraints.</li>
+      <li>Arm engagement solved and verified on the robot, and the second robot&rsquo;s issues diagnosed and handed off with a fix guide.</li>
+      <li>Showed that a pipeline built for one robot could carry across to a very different body, under real remote work constraints.</li>
     </ul>
   </section>
 </div>
@@ -1089,7 +1116,7 @@
     <a class="back-link" href="#embodyx">&larr; EmbodyX overview</a>
     <div class="page-header">
       <h1>Robots into a Production Web Platform</h1>
-      <div class="meta">Full-stack integration &middot; robot-side agent, ROS 2 bridge, portal features</div>
+      <div class="meta">Full stack integration &middot; robot side agent, ROS 2 bridge, portal features</div>
     </div>
     <div class="tags">
       <span class="tag teal">Django / DRF</span><span class="tag teal">React / TypeScript</span><span class="tag teal">Python asyncio</span>
@@ -1097,19 +1124,19 @@
     </div>
 
     <h2 class="section-title">Overview</h2>
-    <p class="body-text">EmbodyX&rsquo;s product includes an internal web platform that runs the whole robot-data lifecycle (record &rarr; clean &rarr; convert &rarr; fine-tune). I brought the dual-arm robot into it as a first-class citizen and worked across the full stack.</p>
+    <p class="body-text">EmbodyX&rsquo;s product includes an internal web platform that runs the whole robot data lifecycle: record, clean, convert, and fine tune. I brought the dual UR3 into it as a first class robot and worked across the full stack, from the code on the robot to the browser UI.</p>
 
     <h2 class="section-title">What I built</h2>
     <ul class="bullets">
-      <li>A <b>robot-side agent</b> (Python asyncio) connecting the physical robot to the platform &mdash; with a custom line-protocol, durable state, and dead-man safety switches &mdash; plus a ROS 2 service bridge.</li>
-      <li>End-to-end portal features: a watch-only &ldquo;spectate&rdquo; viewer, conditional workflow branching on the robot&rsquo;s live signals, and a model-deploy control.</li>
-      <li>Backend and frontend work across a Django + DRF + Channels + PostgreSQL + Redis backend and a React + Vite + TypeScript frontend &mdash; all test-driven &mdash; plus a cross-cutting bug-hunt that fixed several production issues.</li>
+      <li>A <b>robot side agent</b> in Python asyncio that connects the physical robot to the platform, with a custom line protocol, durable state, and dead man safety switches, plus a ROS 2 service bridge.</li>
+      <li>Three end to end portal features: a watch only spectate viewer, conditional workflow branching on the robot&rsquo;s live signals, and a control to deploy a model.</li>
+      <li>Backend and frontend work across a Django, DRF, Channels, PostgreSQL, and Redis backend and a React, Vite, and TypeScript frontend, all test driven, plus a cross cutting bug hunt that fixed several production issues.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
-      <li>The robot&rsquo;s data-conversion path was merged into the platform&rsquo;s main branch; the broader integration shipped on feature branches.</li>
-      <li>Honest scope: I <b>extended a large, existing team platform</b> rather than building it from scratch &mdash; bringing one new robot fully into it, from the robot agent to the browser UI.</li>
+      <li>My data conversion path was merged into the platform&rsquo;s main branch, and the broader integration shipped on feature branches.</li>
+      <li>Honest scope: I <b>extended a large, existing team platform</b> rather than building it alone, bringing one new robot fully into it, from the robot agent to the browser UI.</li>
     </ul>
   </section>
 </div>
@@ -1128,7 +1155,7 @@
       <div class="meta">
         Role: Simulation Team Member and Environment Developer<br>
         Advanced Computation and Artificial Intelligence (ACAI) Lab, Dr. Shengfeng Yang<br>
-        January 2026 &ndash; Present
+        January 2026 to Present
       </div>
     </div>
 
@@ -1184,7 +1211,7 @@
       <div class="meta">
         Role: Design Lead and Electrical Team Member<br>
         Engineering Projects in Community Service (EPICS), Mobility (MOBI), Purdue University<br>
-        August 2024 &ndash; May 2025
+        August 2024 to May 2025
       </div>
     </div>
 
@@ -1311,7 +1338,7 @@
 
     <h2 class="section-title">Results</h2>
     <ul class="bullets">
-      <li>Produced a fully constrained, kinematically valid engine assembly &mdash; designing for manufacturability and validating kinematics within a PLM environment before physical production.</li>
+      <li>Produced a fully constrained, kinematically valid engine assembly, designing for manufacturability and validating kinematics within a PLM environment before physical production.</li>
     </ul>
   </section>
 </div>
@@ -1323,7 +1350,7 @@
     <div class="page-header">
       <h1>The Nostradamus Project: Global Hurricane Predictor</h1>
       <div class="meta">
-        Role: Creator and Developer &middot; September &ndash; December 2024 &middot;
+        Role: Creator and Developer &middot; September to December 2024 &middot;
         <a href="https://github.com/Fabricio-Giusti/Nostradamus-Project" target="_blank" style="color:var(--teal); text-decoration:none;">View on GitHub</a>
       </div>
     </div>
@@ -1335,7 +1362,7 @@
 
     <h2 class="section-title">Overview</h2>
     <ul class="bullets">
-      <li>A Python tool that processes the complete IBTrACS v04r01 dataset from NOAA &mdash; over <b>3 million</b> cyclone track records from all ocean basins, 1842 to present (~310&nbsp;MB).</li>
+      <li>A Python tool that processes the complete IBTrACS v04r01 dataset from NOAA, over <b>3 million</b> cyclone track records from all ocean basins, 1842 to present (about 310&nbsp;MB).</li>
       <li>Given any city and month, it computes the historical probability of a hurricane passing within a 5-degree radius and classifies the risk from Very Low to Extreme.</li>
       <li>Built in two iterations: a procedural version, then a refactor using vectorized pandas for much better performance.</li>
     </ul>
@@ -1352,7 +1379,7 @@
       <li><b>Geocoding module</b> (location.py) using the OpenStreetMap Nominatim API to turn any city name into coordinates via HTTP requests and JSON parsing.</li>
       <li><b>Probability algorithm</b> using pandas boolean masking to filter by month and a &plusmn;5&deg; bounding box, counting unique Storm IDs to find distinct hurricanes.</li>
       <li><b>Vectorized refactor</b> replacing loop-based counting with pandas operations (.nunique()) for significantly faster filtering.</li>
-      <li><b>Geospatial visualization</b> with Folium and Branca &mdash; an interactive global heatmap with a color-scaled legend and a risk-classification tooltip.</li>
+      <li><b>Geospatial visualization</b> with Folium and Branca: an interactive global heatmap with a color scaled legend and a risk classification tooltip.</li>
       <li>Input validation and error handling for CSV loading and geocoding failures.</li>
     </ul>
 
