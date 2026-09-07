@@ -614,7 +614,7 @@
       <div class="profile-info">
         <h2>Fabricio Giusti Oliveira Monteiro</h2>
         <div class="title">Mechanical Engineering, Purdue University &middot; Robotics &amp; Embodied AI</div>
-        <p>I am a Mechanical Engineering student at Purdue University focused on robotics, automation, and bringing machine learning into physical systems. My work spans the full stack of a robot, from CAD and hands on hardware bring up to data pipelines, model training, and autonomous deployment.</p>
+        <p>I am a Mechanical Engineering student at Purdue University focused on robotics, automation, and bringing machine learning into physical systems. My work spans the full stack of a robot, from CAD and hands on hardware to data pipelines, model training, and autonomous deployment.</p>
         <p>Most recently I was a Robotics Engineer Intern at EmbodyX, where I built and ran the full imitation learning pipeline for a dual arm robot: teleoperation, data collection, Vision Language Action model fine tuning, and deployment on the real robot. I am also an Undergraduate Research Assistant at Purdue&rsquo;s ACAI Lab, and I co-founded the Boiler Soccer Robot Association to compete in the RoboCup Humanoid League.</p>
         <div class="profile-links">
           <a href="mailto:fabriciogiusti28@gmail.com">Email</a>
@@ -732,15 +732,29 @@
         <h3>Software</h3>
         <ul>
           <li>Python</li><li>C++</li><li>C</li><li>MATLAB</li>
-          <li>Bash / Linux</li><li>Git</li><li>Docker</li><li>Google Cloud, Azure</li><li>REST APIs</li>
+          <li>Bash / Linux</li><li>Git</li><li>REST APIs</li>
         </ul>
       </div>
       <div class="skill-block">
         <h3>Robotics &amp; ML</h3>
         <ul>
-          <li>ROS 2</li><li>PyTorch, JAX</li><li>MuJoCo</li><li>LeRobot</li>
+          <li>ROS 2</li><li>PyTorch, JAX</li><li>openpi</li><li>MuJoCo</li><li>LeRobot</li>
           <li>OpenCV</li><li>NumPy, pandas</li><li>Weights &amp; Biases</li><li>Hugging Face</li>
           <li>CUDA</li><li>NVIDIA Jetson (edge)</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Web &amp; Backend</h3>
+        <ul>
+          <li>Django, DRF</li><li>React</li><li>TypeScript</li>
+          <li>PostgreSQL</li><li>Redis</li><li>Vite</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Cloud &amp; MLOps</h3>
+        <ul>
+          <li>Google Cloud, Azure</li><li>Docker</li><li>SSH / VPN</li>
+          <li>NFS, tmux</li><li>vLLM, llama.cpp</li>
         </ul>
       </div>
       <div class="skill-block">
@@ -827,7 +841,7 @@
     </div>
 
     <p class="body-text lead">EmbodyX builds Vision Language Action (VLA) models: foundation models that take in camera images and a language instruction and output robot motion. As a Robotics Engineer here I built and ran the full pipeline that turns a task into an autonomous behavior on a bimanual dual UR3 robot. I collected the demonstration data by VR teleoperation, fine tuned the policy, and deployed it back onto the real robot.</p>
-    <p class="body-text">I also went well beyond that core. I optimized model inference on edge and cloud GPUs, built a computer vision system, deployed policies onto humanoid robots, and shipped full stack features into the company&rsquo;s web platform. I built the robot cell itself too, not just the software: I assembled and wired the dual UR3 workstation, mounted the three cameras, ran the cabling, and soldered custom connectors, so my work went from the physical bring up all the way to the trained policy that runs on it. The policies I trained were shown in the company&rsquo;s live robot demonstrations.</p>
+    <p class="body-text">I also went well beyond that core. I optimized model inference on edge and cloud GPUs, built a computer vision system, deployed policies onto humanoid robots, and shipped full stack features into the company&rsquo;s web platform. I built the robot cell itself too, not just the software: I assembled and wired the dual UR3 workstation, mounted the three cameras, ran the cabling, and soldered custom connectors, so my work went from the hardware itself all the way to the trained policy that runs on it. The policies I trained were shown in the company&rsquo;s live robot demonstrations.</p>
     <p class="body-text">Models I worked with: <strong>&pi;0.5</strong> (Physical Intelligence&rsquo;s openpi), <strong>OpenVLA-OFT</strong>, and a family of world action models (WAMs) that predict future video jointly with actions: <strong>LingBot-VA</strong>, <strong>ImageWAM</strong>, and <strong>Fast-WAM</strong>.</p>
 
     <div class="img-grid cols-2">
@@ -1038,6 +1052,7 @@
       <li><b>Edge study.</b> I profiled inference on the Orin, found a Python GIL contention issue, tuned the power modes, and benchmarked a quantized C++ (ggml) backend against PyTorch with interleaved A/B tests.</li>
       <li><b>World action models.</b> Beyond &pi;0.5, I deployed a family of world action models onto the same dual UR3 robot. I wrote the deployment scaffold and the entire Fast-WAM track (server, client, config, and profiler), and reverse engineered the model&rsquo;s sync protocol from its server source.</li>
       <li><b>Model evaluation.</b> I tested the trained policies to decide which ones actually worked, running rollouts on the real robot and comparing checkpoints and training approaches, so the policies chosen for the live demonstrations were dependable.</li>
+      <li><b>Voice launcher.</b> A simple way to start a demo by voice. It listens for a keyword in what the operator says and starts the matching task, so saying "medicine" starts the medicine task. Built with faster-whisper for speech to text and Piper for the spoken reply.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
