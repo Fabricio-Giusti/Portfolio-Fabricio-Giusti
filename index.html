@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fabricio Giusti - Engineering Portfolio</title>
+<title>Fabricio Giusti, Engineering Portfolio</title>
+<meta name="description" content="Fabricio Giusti, a Purdue mechanical engineering student working in robotics and embodied AI. Robotics Engineer Intern at EmbodyX (Vision Language Action models on a dual UR3 robot), plus research and engineering projects.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fabricio Giusti · Robotics and Embodied AI">
+<meta property="og:description" content="Robotics Engineer Intern at EmbodyX (VLA models on a dual UR3 robot), Purdue mechanical engineering, plus research and engineering projects.">
+<meta property="og:image" content="https://fabricio-giusti.github.io/Portfolio-Fabricio-Giusti/media/ur3_cell.jpg">
+<meta property="og:url" content="https://fabricio-giusti.github.io/Portfolio-Fabricio-Giusti/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%BE%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -201,9 +209,9 @@
   }
 
   .profile-info p {
-    color: #555;
+    color: #444;
     line-height: 1.75;
-    font-size: 0.9rem;
+    font-size: 0.97rem;
     margin-bottom: 0.9rem;
   }
 
@@ -272,8 +280,8 @@
   }
 
   p.body-text {
-    color: #555;
-    font-size: 0.9rem;
+    color: #444;
+    font-size: 0.97rem;
     line-height: 1.75;
     margin-bottom: 0.8rem;
   }
@@ -288,8 +296,8 @@
 
   ul.bullets li {
     margin-bottom: 0.5rem;
-    color: #555;
-    font-size: 0.9rem;
+    color: #444;
+    font-size: 0.97rem;
     line-height: 1.65;
   }
   ul.bullets li b { color: var(--dark); font-weight: 600; }
@@ -547,8 +555,25 @@
   .awards-list .award-name { font-weight: 600; color: var(--dark); display: block; }
   .awards-list .award-org { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.1rem; }
 
+  .mobile-bar { display: none; }
+  .nav-backdrop { display: none; }
+
   @media (max-width: 800px) {
-    .sidebar { display: none; }
+    .mobile-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 40;
+      background: var(--dark); color: white;
+      padding: 0.65rem 1rem;
+    }
+    .mobile-bar .mb-name { font-family: 'Lora', serif; font-size: 0.9rem; font-weight: 600; }
+    .mobile-bar .mb-name a { color: inherit; text-decoration: none; }
+    .mobile-bar .mb-toggle { background: none; border: none; color: white; font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 0 0.35rem; }
+    .sidebar {
+      display: flex; width: 250px; min-width: 250px;
+      transform: translateX(-100%); transition: transform 0.2s ease; z-index: 60;
+    }
+    body.nav-open .sidebar { transform: translateX(0); }
+    body.nav-open .nav-backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 55; }
     .main { margin-left: 0; }
     .page { padding: 2rem 1.5rem; }
     .profile-grid { grid-template-columns: 1fr; }
@@ -597,6 +622,12 @@
 </aside>
 
 <main class="main">
+
+<div class="mobile-bar">
+  <div class="mb-name"><a href="#profile">Fabricio Giusti</a></div>
+  <button class="mb-toggle" aria-label="Open menu">&#9776;</button>
+</div>
+<div class="nav-backdrop"></div>
 
 <!-- =================================================================== -->
 <!-- LANDING VIEW: Profile + Projects index + Skills + Awards            -->
@@ -672,7 +703,7 @@
         <div class="card-body">
           <h3>Sim-to-Real VLA Pipeline for Mobile ALOHA</h3>
           <div class="card-meta">Research &middot; ACAI Lab, Purdue &middot; 2026 to present</div>
-          <p>Built scripted bimanual policies and a domain-randomized MuJoCo pipeline that generates manipulation data to fine-tune Vision-Language-Action models.</p>
+          <p>Built scripted bimanual policies and a MuJoCo pipeline with domain randomization that generates manipulation data to fine tune Vision Language Action models.</p>
           <div class="tags"><span class="tag teal">MuJoCo</span><span class="tag teal">Python</span><span class="tag">VLA Models</span></div>
           <span class="open-link">Open project &rarr;</span>
         </div>
@@ -740,7 +771,7 @@
         <ul>
           <li>ROS 2</li><li>PyTorch, JAX</li><li>openpi</li><li>MuJoCo</li><li>LeRobot</li>
           <li>OpenCV</li><li>NumPy, pandas</li><li>Weights &amp; Biases</li><li>Hugging Face</li>
-          <li>CUDA</li><li>NVIDIA Jetson (edge)</li>
+          <li>CUDA toolchain</li><li>NVIDIA Jetson (edge)</li>
         </ul>
       </div>
       <div class="skill-block">
@@ -822,7 +853,7 @@
       <h1>Robotics Engineer Intern, EmbodyX</h1>
       <div class="meta">
         EmbodyX &middot; San Mateo, CA &middot; May to August 2026<br>
-        Embodied-AI startup building Vision-Language-Action (VLA) models and robot-data pipelines
+        A Silicon Valley startup building Vision Language Action (VLA) models and robot data pipelines
       </div>
     </div>
 
@@ -833,7 +864,7 @@
       </div>
     </div>
 
-    <p class="body-text lead">EmbodyX builds <strong>Vision Language Action (VLA)</strong> models: foundation models that take in camera images and a language instruction and output robot motion. As a Robotics Engineer here I built and ran the full pipeline that turns a task into an autonomous behavior on a <strong>bimanual dual UR3</strong> robot. I collected the demonstration data by VR teleoperation, fine tuned the policy, and deployed it back onto the real robot.</p>
+    <p class="body-text lead">EmbodyX builds <strong>Vision Language Action (VLA)</strong> models: foundation models that take in camera images and a language instruction and output robot motion. As a Robotics Engineer Intern here I built and ran the full pipeline that turns a task into an autonomous behavior on a <strong>bimanual dual UR3</strong> robot. I collected the demonstration data by VR teleoperation, fine tuned the policy, and deployed it back onto the real robot.</p>
     <p class="body-text">I also went well beyond that core. I optimized model inference on edge and cloud GPUs, built a computer vision system, deployed policies onto humanoid robots, and shipped full stack features into the company&rsquo;s web platform. I built the robot cell itself too, not just the software: I assembled and wired the dual UR3 workstation, mounted the three cameras, ran the cabling, and soldered custom connectors, so my work went from the hardware itself all the way to the trained policy that runs on it. The policies I trained were shown in the company&rsquo;s live robot demonstrations.</p>
     <p class="body-text">Models I worked with: <strong>&pi;0.5</strong> (Physical Intelligence&rsquo;s openpi), <strong>OpenVLA-OFT</strong>, and a family of world action models (WAMs) that predict future video jointly with actions: <strong>LingBot-VA</strong>, <strong>ImageWAM</strong>, and <strong>Fast-WAM</strong>.</p>
 
@@ -1045,7 +1076,7 @@
       <li><b>Edge study.</b> I profiled inference on the Orin, found a Python GIL contention issue, and tuned the power modes. I also tested different quantization modes (Q8 and Q4) on a C++ (ggml) backend against PyTorch, with interleaved A/B tests, to see whether they would hold up on the robot.</li>
       <li><b>World action models.</b> Beyond &pi;0.5, I deployed a family of world action models onto the same dual UR3 robot. I wrote the deployment scaffold and the entire Fast-WAM track (server, client, config, and profiler), and reverse engineered the model&rsquo;s sync protocol from its server source.</li>
       <li><b>Model evaluation.</b> I tested the trained policies to decide which ones actually worked, running rollouts on the real robot and comparing checkpoints and training approaches, so the policies chosen for the live demonstrations were dependable.</li>
-      <li><b>Voice launcher.</b> A simple way to start a demo by voice. It listens for a keyword in what the operator says and starts the matching task, so saying "medicine" starts the medicine task. Built with faster-whisper for speech to text and Piper for the spoken reply.</li>
+      <li><b>Voice launcher.</b> A simple way to start a demo by voice. It listens for a keyword in what the operator says and starts the matching task, so saying &ldquo;medicine&rdquo; starts the medicine task. Built with faster-whisper for speech to text and Piper for the spoken reply.</li>
     </ul>
 
     <h2 class="section-title">Results</h2>
@@ -1454,6 +1485,16 @@
 
     window.addEventListener('hashchange', render);
     render();
+
+    // ---- mobile nav drawer ----
+    var mbToggle = document.querySelector('.mb-toggle');
+    var backdrop = document.querySelector('.nav-backdrop');
+    function closeNav() { document.body.classList.remove('nav-open'); }
+    if (mbToggle) mbToggle.addEventListener('click', function () { document.body.classList.toggle('nav-open'); });
+    if (backdrop) backdrop.addEventListener('click', closeNav);
+    var sideLinks = document.querySelectorAll('.sidebar a');
+    for (var s = 0; s < sideLinks.length; s++) sideLinks[s].addEventListener('click', closeNav);
+    window.addEventListener('hashchange', closeNav);
 
     // ---- demo video gallery ----
     var thumbs = document.querySelectorAll('.demo-thumb');
